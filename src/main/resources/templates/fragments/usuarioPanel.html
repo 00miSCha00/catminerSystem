@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<div th:fragment="usuarioPanel">
+	<div class="action">
+		<div class="profile" onclick="menuToggle();">
+			<img th:src="@{img/user.png}" alt="usuario">
+		</div>
+
+		<div class="menu">
+			<h3>
+				Cuenta de Usuario
+				<div>Equipo de Operaciones</div>
+			</h3>
+			<ul>
+				<li><span class="material-icons icons-size">></span> <a
+					href="#">Mi Perfil</a></li>
+				<li><span class="material-icons icons-size">></span> <a
+					href="#">Cambiar clave</a></li>
+				
+			</ul>
+		</div>
+	</div>
+</div>
+</html>

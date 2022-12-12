@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org"
+      xmlns:sec="http://www.thymeleaf.org/thymeleaf-extras-springsecurity5">
+<head th:replace="fragments/header :: head-catminer" />
+<body>
+ 	
+ 	<div  th:replace="fragments/usuarioPanel :: usuarioPanel"></div>
+ 	<div id="wrapper">
+		<div  th:replace="fragments/menu :: menu"></div>
+		<section id="content">
+			<div th:replace="${view} :: content" ></div>
+		</section>
+	</div>
+	<div  th:replace="fragments/footerPanel :: footerPanel"></div>
+	
+	<footer th:replace="fragments/footer :: footer"></footer>
+	
+
+</body>
+</html>

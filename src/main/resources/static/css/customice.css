@@ -1,0 +1,86 @@
+.main-box {
+	text-align: center;
+	padding: 20px;
+	border-radius: 5px;
+	-moz-border-radius: 5px;
+	-webkit-border-radius: 5px;
+	margin-bottom: 40px;
+}
+
+.main-box a, .main-box a:hover {
+	color: #fff;
+	text-decoration: none;
+}
+
+.mb-dull {
+	background-color: #8F8F2C;
+}
+
+.mb-red {
+	background-color: #d36f2e;
+}
+
+.mb-pink {
+	background-color: #FF2F71;
+}
+
+.mb-blue {
+	background-color: #4971e4;
+}
+
+.mb-green {
+	background-color: #46e3e8;
+}
+
+.mb-yellow {
+	background-color: #ffff80;
+
+}
+.main-box h5 {
+	font-size: 16px;
+	font-weight: 800;
+	text-transform: uppercase;
+}
+
+
+.page-head-line {
+    font-size: 30px;
+    text-transform: uppercase;
+    color: #000;
+    font-weight: 800;
+    padding-bottom: 20px;
+    border-bottom: 2px solid #00CA79;
+    margin-bottom: 10px;
+}
+
+.page-subhead-line {
+    font-size: 14px;
+    padding-top: 5px;
+    padding-bottom: 20px;
+    font-style:italic;
+    margin-bottom:30px;
+    border-bottom:1px dashed #00CA79;
+
+}
+
+.pull-right {
+  float: right !important;
+}
+
+
+
+.img-logo{
+  margin-top: -25px;
+  margin-left: 50px;
+  width:60px;
+  height:40px;
+  background-size: 100% 100%;
+  background-repeat:no-repeat;
+  background:url(../img/logoCatminer.png);
+  background-size: cover;
+  }
+.img-logo img{
+  width: 100%;
+}
+
+

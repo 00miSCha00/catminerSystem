@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<div th:fragment="content">
+
+	<div class="row">
+		<div class="col-md-12">
+			<h1 class="page-head-line">Registro de Banco</h1>
+
+		</div>
+	</div>
+	<br /> <br />
+
+
+	<div class="row ">
+		<div class="col-lg-8">
+				<div class="form-group">
+					<!-- Full Name -->
+					<label for="descripcionBancoId" class="control-label">Descripción</label> <input
+						type="text" class="form-control" id="descripcionBancoId"
+						name="descripcionBanco" placeholder="Ingresa el nombre del Banco ">
+				</div>
+
+				<div class="form-group">
+					<!-- Street 1 -->
+					<label for="numeroCuentaId" class="control-label">Numero de Cuenta
+						</label> <input type="text" class="form-control" id="numeroCuentaId"
+						name="numeroCuenta"
+						placeholder="Ingrese numero de cuenta">
+				</div>
+
+				<div class="form-group">
+					<!-- Street 2 -->
+					<label for="codigoInterbancarioId" class="control-label">Código Interbancario
+						</label> <input type="text" class="form-control" id="codigoInterbancarioId"
+						name="codigoInterbancario"
+						placeholder="Ingrese numero de codigo interbancario">
+				</div>
+
+				
+
+				<div class="form-group">
+					<button type="button" class="btn btn-danger">Cancelar</button>
+					<button type="button" class="btn btn-primary">Registrar</button>
+				</div>
+
+		</div>
+	</div>
+
+</div>

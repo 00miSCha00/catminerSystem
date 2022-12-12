@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<div th:fragment="content">
+
+	<div class="row">
+		<div class="col-md-12">
+			<h1 class="page-head-line">Filtros de busqueda</h1>
+
+		</div>
+	</div>
+	<br /> <br />
+
+
+	<div class="panel content-main">
+		<div class="panel">
+			
+			<div class="panel-body">
+				<div class="row">
+					<div class="col-sm-4">
+						<div class="input-group">
+							<label>Descripción</label> <input type="text"
+								class="form-control numeric col-sm-12" name="descripcionBanco"
+								id="descripcionBanco" placeholder="buscar por descripción" />
+						</div>
+					</div>
+					<div class="col-sm-8"></div>
+				</div>
+				<br /> <br />
+				<hr style="margin-top: 1px; margin-bottom: 1px;" />
+				<div class="row">
+					<div class="col-sm-11">
+						<h4 class="text-primary">LISTADO DE CUENTAS DE BANCOS</h4>
+					</div>
+					<div class="col-sm-1" style="text-align: right" id="exportarExcel">
+						<img th:src="@{img/Excel-xls.ico}" alt="exportar Excel" width="40" /><br />
+					</div>
+					<br />
+				</div>
+			</div>
+			<div class="panel-body">
+				<div class="row">
+					<div class="col-md-12" id="resultado">
+						<div class="table-responsive"
+							style="padding: 1em; text-align: center;">
+							<table id="listadoBancos"
+								class="table table-striped table-hover table-fw-widget table-text-small display3"
+								style="width: 100%; overflow-x: auto;">
+								<thead>
+									<tr>
+										<th class="small col-md-3">Descripción</th>
+										<th class="small col-md-3">Nro Cuenta</th>
+										<th class="small col-md-3">Nro Codigo Interbancario</th>
+										<th class="small col-md-3">Opciones</th>
+
+									</tr>
+								</thead>
+								<tbody style="font-size: 11px; text-align: left;">
+
+
+								</tbody>
+							</table>
+						</div>
+					</div>
+
+				</div>
+			</div>
+
+		</div>
+	</div>
+
+</div>

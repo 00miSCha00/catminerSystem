@@ -1,0 +1,246 @@
+#menu_on{
+	display: inline-block;
+	width:30px;
+	height: 20px;
+	position: relative;
+	z-index: 2;
+}
+
+#menu_on span{
+	width: 100%;
+	height: 4px;
+	border-radius: 4px;
+	display: block;
+	position: absolute;
+	background: #fff;
+	transition: all 0.25s ease;
+	transform-origin : 0px 100%;
+}
+
+#menu_on span:nth-child(2){
+	top: calc(50% - 2px);
+}
+
+#menu_on span:nth-child(3){
+bottom: 0;
+}	
+	.visible_menu span:nth-child(1){
+		transform: rotate(45deg) translate(-2px,1px); 
+	}
+
+	.visible_menu span:nth-child(2){
+		opacity: 0;
+	}
+
+
+	.visible_menu span:nth-child(3){
+		transform: rotate(-45deg) translate(-3px,3px); 
+	}
+
+nav{
+	position: fixed;
+	top: 0;
+	bottom: 0;
+	left:-300px;
+	width: 300px;
+	z-index: 1;
+	padding: 90px 30px 30px;
+	background: #68C5DB;
+	opacity: 0;
+	transition: all 0.75s ease;
+	font-size: 1.2em;
+	overflow-y: auto;
+}
+
+
+.visible_menu nav{
+	left: 0;
+	opacity: 1;
+}
+
+nav a{
+	display:block;
+	text-decoration: none;
+	padding: 10px;
+	color: rgba(255,255,255,0.75);
+	border-bottom: 1px solid rgba(255,255,255,0.2);
+	transition: all ease 0.25s;
+}
+
+nav a:hover{
+	color: rgba(255,255,255,1);
+	border-bottom-color:rgba(255,255,255,0.4);
+}
+
+#content{
+	padding:100px 8%;
+
+	text-align: left;
+	height: 100vh;
+	position: relative;
+	display: table;
+	width: 100%;
+	transition: all 0.75s ease;
+
+}
+
+
+.visible_menu #content{
+transform: translateX(260px);
+}
+
+h1{
+	font-size: 2em;
+	color: rgba(0,0,0,0.5);
+	margin-bottom: 20px;
+}
+
+p{
+	font-size: 1.5em;
+	opacity: 0.82;
+	line-height: 1.2em;
+	margin-bottom: 60px;
+	color: rgba(0,0,0,0.3);
+}
+
+#content a{
+	font-size: 0.8em;
+	text-decoration: none;
+	display: inline-block;
+	padding: 12px 16px;
+	border-radius: 25px;
+	border:1px solid #e3e3e3;
+	color: rgba(0,0,0,0.5);
+
+}
+
+#content a:hover{
+	color: rgba(0,0,0,0.8);
+}
+
+a img{
+	width: 16px;
+	height: 16px;
+	opacity: 0.5
+}
+
+#content a:hover img{
+	opacity: 1;
+}
+
+.logo {
+    margin-left: 50px;
+    margin-top: -15px;
+}
+.usuario {
+  position: absolute;
+  top: 15px;
+  right: 15px;
+  font-size: 1.2rem;
+  color: #0e2431;
+}
+
+
+
+
+/******Para el panel de usuario***/
+
+
+.icons-size{
+    color: #333;
+    font-size: 14px;
+}
+.action{
+	z-index:100;
+    position: fixed;
+    right: 30px;
+    top:20px
+}
+.action .profile{
+    border-radius: 50%;
+    cursor: pointer;
+    height: 60px;
+    overflow: hidden;
+    position: relative;
+    width: 60px;
+}
+.action .profile img{
+    width: 100%;
+    top:0;
+    position: absolute;
+    object-fit: cover;
+    left: 0;
+    height: 100%;
+}
+.action .menu{
+    background-color:#ddd;
+    box-sizing:0 5px 25px rgba(0,0,0,0.1);
+    border-radius: 15px;
+    padding: 10px 20px;
+    position: absolute;
+    right: -10px;
+    width: 200px;
+    transition: 0.5s;
+    top: 120px;
+    visibility: hidden;
+    opacity: 0;
+}
+.action .menu.active{
+    opacity: 1;
+    top: 80px;
+    visibility: visible;
+}
+.action .menu::before{
+    background-color:#ddd;
+    content: '';
+    height: 20px;
+    position: absolute;
+    right: 30px;
+    transform:rotate(45deg);
+    top:-5px;
+    width: 20px;
+}
+.action .menu h3{
+    color: #555;
+    font-size: 16px;
+    font-weight: 600;
+    line-height: 1.3em;
+    padding: 20px 0px;
+    text-align: left;
+    width: 100%;
+}
+.action .menu h3 div{
+    color: #818181;
+    font-size: 14px;
+    font-weight: 400;
+}
+.action .menu ul li{
+    align-items: center;
+    border-top:1px solid rgba(0,0,0,0.05);
+    display: flex;
+    justify-content: left;
+    list-style: none;
+    padding: 10px 0px;
+}
+.action .menu ul li img{
+    max-width: 20px;
+    margin-right: 10px;
+    opacity: 0.5;
+    transition:0.5s
+}
+.action .menu ul li a{
+    display: inline-block;
+    color: #555;
+    font-size: 14px;
+    font-weight: 600;
+    padding-left: 15px;
+    text-decoration: none;
+    text-transform: uppercase;
+    transition: 0.5s;
+}
+.action .menu ul li:hover img{
+    opacity: 1;
+}
+.action .menu ul li:hover a{
+    color:#ff00ff;
+}
