@@ -4,40 +4,46 @@ import java.util.Date;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.Table;
 
 import lombok.AllArgsConstructor;
 import lombok.Data;
+import lombok.Getter;
+import lombok.NoArgsConstructor;
+import lombok.Setter;
+import lombok.ToString;
 
-@AllArgsConstructor
 @Data
+@NoArgsConstructor
+@AllArgsConstructor
+@Getter
+@Setter
+@ToString
 @Entity
 @Table(name = "TIPOCARRERA", schema = "public")
 public class TipoCarrera {
 	
 	@Id 
-	@GeneratedValue(strategy = GenerationType.AUTO)
-	@Column (name = "coTipoCarrera")
+	//@GeneratedValue(strategy = GenerationType.AUTO)
+	@Column (name = "cotipocarrera")
 	private int coTipoCarrera;
-	@Column (name = "deTipoCarrera")
+	@Column (name = "detipocarrera")
 	private String deTipoCarrera;
 	
-	@Column (name = "esRegistro")
+	@Column (name = "esregistro")
 	private int esRegistro;
-	@Column (name = "usuarioCreacion")
+	@Column (name = "usucrea")
 	private String usuarioCreacion;
-	@Column (name = "fechaCreacion")
+	@Column (name = "fecrea")
 	private Date fechaCreacion;
-	@Column (name = "ipCreacion")
+	@Column (name = "ipcrea")
 	private String ipCreacion;
-	@Column (name = "usuarioModificacion")
+	@Column (name = "usumodi")
 	private String usuarioModificacion;
-	@Column (name = "fechamodificacion")
+	@Column (name = "femodi")
 	private Date fechaModificacion;
-	@Column (name = "ipmodificacion")
+	@Column (name = "ipmodi")
 	private String ipModificacion;	
 	
 }

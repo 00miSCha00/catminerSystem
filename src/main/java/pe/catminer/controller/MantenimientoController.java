@@ -1,4 +1,4 @@
-package pe.catminer.api;
+package pe.catminer.controller;
 
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;

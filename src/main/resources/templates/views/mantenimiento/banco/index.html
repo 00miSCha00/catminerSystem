@@ -4,7 +4,7 @@
 
 	<div class="row">
 		<div class="col-md-12">
-			<h1 class="page-head-line">Filtros de busqueda</h1>
+			<h1 class="page-head-line">BANCOS :: Filtros de busqueda</h1>
 
 		</div>
 	</div>
@@ -13,27 +13,39 @@
 
 	<div class="panel content-main">
 		<div class="panel">
-			
+
 			<div class="panel-body">
 				<div class="row">
-					<div class="col-sm-4">
+					<div class="col-sm-8">
 						<div class="input-group">
-							<label>Descripción</label> <input type="text"
-								class="form-control numeric col-sm-12" name="descripcionBanco"
-								id="descripcionBanco" placeholder="buscar por descripción" />
+							<div class="input-group-prepend">
+								<span class="span-label input-group-text">Descripción</span>
+							</div>
+							<input type="text" class="form-control numeric col-sm-12"
+								name="descripcionBanco" id="descripcionBanco"
+								placeholder="buscar por descripción" />
+							<div class="input-group-append" style="z-index: -50;">
+								<button class="btn btn-primary" type="button"
+									id="buscarBanco">Button</button>
+							</div>
 						</div>
+
+
 					</div>
-					<div class="col-sm-8"></div>
+					<div class="col-sm-4"></div>
 				</div>
 				<br /> <br />
-				<hr style="margin-top: 1px; margin-bottom: 1px;" />
+				<hr style="margin-top: 1px; margin-bottom: 1px; border: 2px solid #00CA79;" />
+				<br /> <br />
 				<div class="row">
-					<div class="col-sm-11">
+					<div class="col-sm-10">
 						<h4 class="text-primary">LISTADO DE CUENTAS DE BANCOS</h4>
 					</div>
-					<div class="col-sm-1" style="text-align: right" id="exportarExcel">
-						<img th:src="@{img/Excel-xls.ico}" alt="exportar Excel" width="40" /><br />
+					<div class="col-sm-2" style="text-align: right" >
+						<img th:src="@{img/nuevo.png}" id="nuevo" title="Nuevo Banco" width="40" />&nbsp;&nbsp;
+						<img th:src="@{img/excel.png}" id="exportarExcel" title="exportar Excel" width="40"/>
 					</div>
+					
 					<br />
 				</div>
 			</div>
@@ -54,7 +66,7 @@
 
 									</tr>
 								</thead>
-								<tbody style="font-size: 11px; text-align: left;">
+								<tbody style="font-size: 12px; text-align: left;">
 
 
 								</tbody>
@@ -68,4 +80,10 @@
 		</div>
 	</div>
 
+<div th:include="views/mantenimiento/banco/modal/nuevo"></div>
+</div>
+<div th:fragment="javascript">
+		<script type="text/javascript"
+			th:src="@{js/banco.js}"></script>
+		
 </div>
