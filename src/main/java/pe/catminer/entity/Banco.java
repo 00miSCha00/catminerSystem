@@ -9,6 +9,8 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.Table;
 
+import org.hibernate.annotations.Where;
+
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.Getter;
@@ -24,12 +26,13 @@ import lombok.ToString;
 @ToString
 @Entity
 @Table(name = "banco")
+@Where(clause = "esregistro=1")
 public class Banco {
 	
 	@Id 
 	@GeneratedValue(strategy = GenerationType.AUTO)
 	@Column (name = "cobanco")
-	private Integer coBanco;
+	private int coBanco;
 	@Column (name = "nobanco")
 	private String noBanco;
 	@Column (name = "nucuenta")
