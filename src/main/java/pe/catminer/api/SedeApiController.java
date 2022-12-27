@@ -11,22 +11,22 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RestController;
 
-import pe.catminer.api.request.BancoRequest;
-import pe.catminer.api.response.BancoResponse;
+import pe.catminer.api.request.SedeRequest;
+import pe.catminer.api.response.SedeResponse;
 import pe.catminer.api.response.RespuestaGeneralResponse;
-import pe.catminer.api.service.BancoService;
+import pe.catminer.api.service.SedeService;
 
 @RestController
-public class BancoApiController {
+public class SedeApiController {
 	
 	@Autowired
-	private BancoService bancoService; 
+	private SedeService sedeService; 
 	
-	@PostMapping(value = "/grabarBanco", produces = MediaType.APPLICATION_JSON_VALUE)
-	public ResponseEntity<RespuestaGeneralResponse>  listado(@RequestBody BancoRequest req) {
+	@PostMapping(value = "/grabarSede", produces = MediaType.APPLICATION_JSON_VALUE)
+	public ResponseEntity<RespuestaGeneralResponse>  listado(@RequestBody SedeRequest req) {
 		RespuestaGeneralResponse mRespuesta = new RespuestaGeneralResponse();
 		try {
-			mRespuesta = bancoService.grabarBanco(req);
+			mRespuesta = sedeService.grabarSede(req);
 			
 		} catch (Exception e) {
 			
@@ -36,11 +36,11 @@ public class BancoApiController {
 		return new ResponseEntity<RespuestaGeneralResponse>(mRespuesta, HttpStatus.OK);
 	}
 	
-	@PostMapping(value = "/listarBanco", produces = MediaType.APPLICATION_JSON_VALUE)
-	public List<BancoResponse> listarBanco(@RequestBody BancoRequest req){	
-		List<BancoResponse> listado = new ArrayList<BancoResponse>();
+	@PostMapping(value = "/listarSede", produces = MediaType.APPLICATION_JSON_VALUE)
+	public List<SedeResponse> listarSede(@RequestBody SedeRequest req){	
+		List<SedeResponse> listado = new ArrayList<SedeResponse>();
 		try {
-			listado = bancoService.listarBancos(req);
+			listado = sedeService.listarSedes(req);
 		} catch (Exception e) {
 			
 		}

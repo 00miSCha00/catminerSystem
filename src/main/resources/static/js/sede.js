@@ -1,45 +1,45 @@
 var table;
-var banco = {
+var sede = {
 
 };
-var listadoBanco = [];
+var listadoSede = [];
 $(document).ready(function() {
 	$('#nuevo').click(function() {
-		nuevoBanco();
+		nuevoSede();
 	});
 	$('.grabarRegistro').click(function() {
-		grabarBanco();
+		grabarSede();
 	});
 
 	$('.actualizarRegistro').click(function() {
-		actualizarBanco();
+		actualizarSede();
 	});
 	
 	$('.eliminarRegistro').click(function() {
-		eliminarBanco();
+		eliminarSede();
 	});
 	
-	$('.buscarBanco').click(function() {
-		listarBanco();
+	$('.buscarSede').click(function() {
+		listarSede();
 	});
 	
-	listarBanco();
+	listarSede();
 });
 
 
-function nuevoBanco() {
+function nuevoSede() {
 	limpiar();
-	$('#modalBanco').modal('show');
+	$('#modalSede').modal('show');
 }
 
-function grabarBanco() {
+function grabarSede() {
 
-	cargarBanco();
+	cargarSede();
 	$("#loading-div").show(); 
 	$.ajax({
-		url: './grabarBanco',
+		url: './grabarSede',
 		type: 'POST',
-		data: JSON.stringify(banco),
+		data: JSON.stringify(sede),
 		dataType: 'json',
 		contentType: "application/json; charset=utf-8",
 		success: function(res) {
@@ -70,20 +70,19 @@ function grabarBanco() {
 
 function editar(id) {
 
-	if (listadoBanco.length > 0) {
+	if (listadoSede.length > 0) {
 
-		$.each(listadoBanco, function(key, reg) {
-			if (reg.coBanco === id) {
-				$('#idBanco').val(reg.coBanco);
-				$('#descripcionBanco').val(reg.noBanco);
-				$('#numeroCuenta').val(reg.nuCuenta);
-				$('#codigoInterbancario').val(reg.nucci);
+		$.each(listadoSede, function(key, reg) {
+			if (reg.coSede === id) {
+				$('#idSede').val(reg.coSede);
+				$('#descripcionSede').val(reg.deSede);
+				$('#direccionSede').val(reg.direccion);
 
-				$('.nuevoTitulo').text("Actualización de Banco");
+				$('.nuevoTitulo').text("Actualización de Sede");
 				$("#grabar").removeClass("grabarRegistro");
 				$("#grabar").addClass("actualizarRegistro");
 
-				$('#modalBanco').modal('show');
+				$('#modalSede').modal('show');
 
 			}
 		});
@@ -94,14 +93,14 @@ function editar(id) {
 
 }
 
-function actualizarBanco() {
+function actualizarSede() {
 
-	cargarBanco();
+	cargarSede();
 	$("#loading-div").show(); 
 	$.ajax({
-		url: './grabarBanco',
+		url: './grabarSede',
 		type: 'POST',
-		data: JSON.stringify(banco),
+		data: JSON.stringify(sede),
 		dataType: 'json',
 		contentType: "application/json; charset=utf-8",
 		success: function(res) {
@@ -132,12 +131,12 @@ function actualizarBanco() {
 };
 
 function darBaja(id){
-	if (listadoBanco.length > 0) {
+	if (listadoSede.length > 0) {
 
-		$.each(listadoBanco, function(key, reg) {
-			if (reg.coBanco === id) {
-				banco = reg;
-				$('#datoEliminar').text(reg.noBanco);
+		$.each(listadoSede, function(key, reg) {
+			if (reg.coSede === id) {
+				sede = reg;
+				$('#datoEliminar').text(reg.noSede);
 				$('#eliminarRegistro').modal('show');
 			}
 		});
@@ -145,13 +144,13 @@ function darBaja(id){
 
 }
 
-function eliminarBanco() {
-	banco.esRegistro=0;
+function eliminarSede() {
+	sede.esRegistro=0;
 	$("#loading-div").show(); 
 	$.ajax({
-		url: './grabarBanco',
+		url: './grabarSede',
 		type: 'POST',
-		data: JSON.stringify(banco),
+		data: JSON.stringify(sede),
 		dataType: 'json',
 		contentType: "application/json; charset=utf-8",
 		success: function(res) {
@@ -184,28 +183,28 @@ function eliminarBanco() {
 
 };
 
-function listarBanco() {
-	listadoBanco.length = 0;
-	var url = "./listarBanco";
+function listarSede() {
+	listadoSede.length = 0;
+	var url = "./listarSede";
 	$("#loading-div").show();
-	bancoRequest= {
-		noBanco:$('#descripcionBancoBusqueda').val().toUpperCase()
+	sedeRequest= {
+		deSede:$('#descripcionSedeBusqueda').val().toUpperCase()
 	}
 	$.ajax({
 		url: url,
 		type: 'POST',
 		dataType: 'json',
-		data: JSON.stringify(bancoRequest),
+		data: JSON.stringify(sedeRequest),
 		contentType: "application/json; charset=utf-8",
 		success: function(lista) {
 			var miJson = [];
-			listadoBanco = lista;
+			listadoSede = lista;
 
 			$.each(lista, function(key, reg) {
 
-				reg.opciones = '<a title="Editar Registro" href=javascript:editar(' + reg.coBanco + ');>' +
+				reg.opciones = '<a title="Editar Registro" href=javascript:editar(' + reg.coSede + ');>' +
 					'<i class="fa fa-pencil-square-o" aria-hidden="true"></i>' +
-					'</a>&nbsp;&nbsp;<a title="Eliminar Registro" href=javascript:darBaja(' + reg.coBanco + ');>' +
+					'</a>&nbsp;&nbsp;<a title="Eliminar Registro" href=javascript:darBaja(' + reg.coSede + ');>' +
 					'<i class="fa fa-trash" aria-hidden="true"></i>' +
 					'</a>&nbsp;&nbsp;';
 
@@ -233,18 +232,17 @@ function listarBanco() {
 function loadTable(data) {
 	var colBusqueda = [
 
-		{ data: "noBanco", className: "dt-left", targets: "_all" },
-		{ data: "nuCuenta", className: "dt-center", targets: "_all" },
-		{ data: "nucci", className: "dt-left", targets: "_all" },
+		{ data: "deSede", className: "dt-left", targets: "_all" },
+		{ data: "direccion", className: "dt-center", targets: "_all" },
 		{ data: "opciones", className: "dt-center opciones-table", targets: "_all" }
 
 	];
 
 	if (table) {
 		table.destroy();
-		$('#listadoBancos > tbody').empty();
+		$('#listadoSedes > tbody').empty();
 	}
-	table = $('#listadoBancos').DataTable({
+	table = $('#listadoSedes').DataTable({
 		scrollX: true,
 		searching: false,
 		iDisplayLength: 20,
@@ -278,20 +276,19 @@ function loadTable(data) {
 
 
 };
-function cargarBanco() {
-	banco.coBanco = $('#idBanco').val();
-	banco.noBanco = $('#descripcionBanco').val().toUpperCase();
-	banco.nuCuenta = $('#numeroCuenta').val();
-	banco.nucci = $('#codigoInterbancario').val();
-	banco.esRegistro=1;
+function cargarSede() {
+	sede.coSede = $('#idSede').val();
+	sede.deSede = $('#descripcionSede').val().toUpperCase();
+	sede.direccion = $('#direccionSede').val().toUpperCase();
+	sede.esRegistro=1;
 }
 
 function obtenerObjetoEliminar(id){
 	
-	if (listadoBanco.length > 0) {
+	if (listadoSede.length > 0) {
 
-		$.each(listadoBanco, function(key, reg) {
-			if (reg.coBanco === id) {
+		$.each(listadoSede, function(key, reg) {
+			if (reg.coSede === id) {
 				return reg;
 			}
 		});
@@ -299,15 +296,15 @@ function obtenerObjetoEliminar(id){
 }
 
 function limpiar() {
-	$('#idBanco').val('');
-	$('#descripcionBanco').val('');
-	$('#numeroCuenta').val('');
-	$('#codigoInterbancario').val('');
+	$('#idSede').val('');
+	$('#descripcionSede').val('');
+	$('#direccionSede').val('');
+	$('.nuevoTitulo').text("Registro de Sede");
 	$("#grabar").removeClass("grabarRegistro");
 	$("#grabar").removeClass("actualizarRegistro");
 	$("#grabar").addClass("grabarRegistro");
 }
 
 function retornar() {
-	window.location = "./banco";
+	window.location = "./sede";
 }

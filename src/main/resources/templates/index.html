@@ -1,20 +1,27 @@
 <!DOCTYPE html>
-<html xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org"
-      xmlns:sec="http://www.thymeleaf.org/thymeleaf-extras-springsecurity5">
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:th="http://www.thymeleaf.org"
+	xmlns:sec="http://www.thymeleaf.org/thymeleaf-extras-springsecurity5">
 <head th:replace="fragments/header :: head-catminer" />
 <body>
- 	
- 	<div  th:replace="fragments/usuarioPanel :: usuarioPanel"></div>
- 	<div id="wrapper">
-		<div  th:replace="fragments/menu :: menu"></div>
+
+	<div th:replace="fragments/usuarioPanel :: usuarioPanel"></div>
+	<div id="wrapper">
+		<div th:replace="fragments/menu :: menu"></div>
 		<section id="content">
-			<div th:replace="${view} :: content" ></div>
+			<div th:replace="${view} :: content"></div>
 		</section>
 	</div>
-	<div  th:replace="fragments/footerPanel :: footerPanel"></div>
-	
+	<div th:replace="fragments/footerPanel :: footerPanel"></div>
+
 	<footer th:replace="fragments/footer :: footer"></footer>
 	<div th:replace="${view} :: javascript"></div>
 
+	<div id="loading-div" class="pt-5">
+		<button class="btn btn-primary" type="button" disabled>
+			<span class="spinner-border spinner-border-sm" role="status"
+				aria-hidden="true"></span> Espere por favor ...
+		</button>
+	</div>
 </body>
 </html>

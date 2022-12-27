@@ -7,7 +7,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 @Controller
 public class PanelControlController {
 	
-	@RequestMapping("/")
+	@RequestMapping("/panel")
 	public String Inicio(Model model) {
 		
 		model.addAttribute("view", "views/panelControl/index");
