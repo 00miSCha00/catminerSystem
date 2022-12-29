@@ -15,8 +15,9 @@ import lombok.ToString;
 @ToString
 public class CarreraRequest {
 	
+	private int coCarrera;
 	private int coTipoCarrera;
-	private String deTipoCarrera;
+	private String deCarrera;
 	private int esRegistro;
 }
 

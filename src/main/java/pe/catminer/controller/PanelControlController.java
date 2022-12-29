@@ -5,9 +5,10 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 
 @Controller
+@RequestMapping("/panel")
 public class PanelControlController {
 	
-	@RequestMapping("/panel")
+	@RequestMapping("/")
 	public String Inicio(Model model) {
 		
 		model.addAttribute("view", "views/panelControl/index");

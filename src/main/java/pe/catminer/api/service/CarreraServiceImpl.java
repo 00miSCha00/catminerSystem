@@ -13,63 +13,63 @@ import org.springframework.beans.BeanUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import pe.catminer.api.repository.TipoCarreraRepository;
-import pe.catminer.api.request.TipoCarreraRequest;
+import pe.catminer.api.repository.CarreraRepository;
+import pe.catminer.api.request.CarreraRequest;
+import pe.catminer.api.response.CarreraResponse;
 import pe.catminer.api.response.RespuestaGeneralResponse;
-import pe.catminer.api.response.TipoCarreraResponse;
-import pe.catminer.entity.TipoCarrera;
+import pe.catminer.entity.Carrera;
 
 @Service
-public class CarreraServiceImpl implements TipoCarreraService {
+public class CarreraServiceImpl implements CarreraService {
 
 	@Autowired
 	EntityManager em;
 
 	@Autowired
-	private TipoCarreraRepository tipoCarreraRepository;
+	private CarreraRepository carreraRepository;
 
 	@Override
-	public List<TipoCarreraResponse> listarTipoCarreras(TipoCarreraRequest req) {
+	public List<CarreraResponse> listarCarreras(CarreraRequest req) {
 
-		List<TipoCarrera> listadoTipoCarreras = new ArrayList<TipoCarrera>();
-		List<TipoCarreraResponse> listadoTipoCarreraResponse = new ArrayList<TipoCarreraResponse>();
+		List<Carrera> listadoCarreras = new ArrayList<Carrera>();
+		List<CarreraResponse> listadoCarreraResponse = new ArrayList<CarreraResponse>();
 		try {
 
 			CriteriaBuilder qb = em.getCriteriaBuilder();
-			CriteriaQuery<TipoCarrera> cq = qb.createQuery(TipoCarrera.class);
-			Root<TipoCarrera> tipoCarrera = cq.from(TipoCarrera.class);
+			CriteriaQuery<Carrera> cq = qb.createQuery(Carrera.class);
+			Root<Carrera> carrera = cq.from(Carrera.class);
 			List<Predicate> predicates = new ArrayList<Predicate>();
 
-			if (req.getDeTipoCarrera() != null && !req.getDeTipoCarrera().isEmpty())
-				predicates.add(qb.like(tipoCarrera.get("deTipoCarrera"), "%"+req.getDeTipoCarrera()+"%"));
+			if (req.getDeCarrera() != null && !req.getDeCarrera().isEmpty())
+				predicates.add(qb.like(carrera.get("deCarrera"), "%"+req.getDeCarrera()+"%"));
 
-			cq.select(tipoCarrera).where(predicates.toArray(new Predicate[] {}));
-			listadoTipoCarreras = (List<TipoCarrera>) em.createQuery(cq).getResultList();
+			cq.select(carrera).where(predicates.toArray(new Predicate[] {}));
+			listadoCarreras = (List<Carrera>) em.createQuery(cq).getResultList();
 
-			listadoTipoCarreras.forEach(t -> {
-				TipoCarreraResponse rep = new TipoCarreraResponse();
+			listadoCarreras.forEach(t -> {
+				CarreraResponse rep = new CarreraResponse();
 				BeanUtils.copyProperties(t, rep);
-				listadoTipoCarreraResponse.add(rep);
+				listadoCarreraResponse.add(rep);
 			});
 
 		} catch (Exception e) {
 			System.out.println(e.getMessage());
 		}
 
-		return listadoTipoCarreraResponse;
+		return listadoCarreraResponse;
 	}
 
 	@Override
-	public RespuestaGeneralResponse grabarTipoCarrera(TipoCarreraRequest req) {
+	public RespuestaGeneralResponse grabarCarrera(CarreraRequest req) {
 		RespuestaGeneralResponse mRespuesta = new RespuestaGeneralResponse();
-		TipoCarrera tipoCarreraSave = null;
+		Carrera carreraSave = null;
 		try {
-			if (req.getCoTipoCarrera() > 0)
-				tipoCarreraSave = tipoCarreraRepository.findById(req.getCoTipoCarrera()).get();
+			if (req.getCoCarrera() > 0)
+				carreraSave = carreraRepository.findById(req.getCoCarrera()).get();
 			else
-				tipoCarreraSave = new TipoCarrera();
-			BeanUtils.copyProperties(req, tipoCarreraSave);
-			tipoCarreraRepository.save(tipoCarreraSave);
+				carreraSave = new Carrera();
+			BeanUtils.copyProperties(req, carreraSave);
+			carreraRepository.save(carreraSave);
 			mRespuesta.setExito(true);
 		} catch (Exception e) {
 			return mRespuesta;
