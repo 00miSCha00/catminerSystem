@@ -8,12 +8,9 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.Table;
-import javax.persistence.Transient;
 
-import org.apache.commons.lang3.StringUtils;
 import org.hibernate.annotations.Where;
 
-import lombok.AccessLevel;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.Getter;
@@ -28,16 +25,18 @@ import lombok.ToString;
 @Setter
 @ToString
 @Entity
-@Table(name = "TIPOCARRERA")
+@Table(name = "CARRERA")
 @Where(clause = "esregistro=1")
-public class TipoCarrera {
+public class Carrera {
 	
 	@Id 
 	@GeneratedValue(strategy = GenerationType.AUTO)
+	@Column (name = "cocarrera")
+	private int coCarrera;
 	@Column (name = "cotipocarrera")
 	private int coTipoCarrera;
-	@Column (name = "detipocarrera")
-	private String deTipoCarrera;
+	@Column (name = "decarrera")
+	private String deCarrera;
 	@Column (name = "esregistro")
 	private int esRegistro;
 	@Column (name = "usucrea")

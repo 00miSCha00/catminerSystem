@@ -35,6 +35,20 @@ public class MantenimientoController {
 		return "index";
 	}
 	
+	@RequestMapping("/tipoCarrera")
+	public String listadoTipoCarrera(Model model) {
+		
+		model.addAttribute("view", "views/mantenimiento/tipoCarrera/index");
+		return "index";
+	}
+	
+	@RequestMapping("/nuevaTipoCarrera")
+	public String nuevaTipoCarrera(Model model) {
+		
+		model.addAttribute("view", "views/mantenimiento/tipoCarrera/nuevo");
+		return "index";
+	}
+	
 	
 
 }

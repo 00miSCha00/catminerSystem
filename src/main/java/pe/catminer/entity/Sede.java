@@ -25,7 +25,7 @@ import lombok.ToString;
 @Setter
 @ToString
 @Entity
-@Table(name = "SEDE", schema = "public")
+@Table(name = "SEDE")
 @Where(clause = "esregistro=1")
 public class Sede {
 	
