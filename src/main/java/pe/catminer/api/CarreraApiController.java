@@ -9,26 +9,24 @@ import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
-import pe.catminer.api.request.TipoCarreraRequest;
-import pe.catminer.api.response.TipoCarreraResponse;
+import pe.catminer.api.request.CarreraRequest;
+import pe.catminer.api.response.CarreraResponse;
 import pe.catminer.api.response.RespuestaGeneralResponse;
-import pe.catminer.api.service.TipoCarreraService;
+import pe.catminer.api.service.CarreraService;
 
 @RestController
-@RequestMapping("/carrera")
 public class CarreraApiController {
 	
 	@Autowired
-	private TipoCarreraService tipoCarreraService; 
+	private CarreraService carreraService; 
 	
-	@PostMapping(value = "/grabarTipoCarrera", produces = MediaType.APPLICATION_JSON_VALUE)
-	public ResponseEntity<RespuestaGeneralResponse>  listado(@RequestBody TipoCarreraRequest req) {
+	@PostMapping(value = "/grabarCarrera", produces = MediaType.APPLICATION_JSON_VALUE)
+	public ResponseEntity<RespuestaGeneralResponse>  listado(@RequestBody CarreraRequest req) {
 		RespuestaGeneralResponse mRespuesta = new RespuestaGeneralResponse();
 		try {
-			mRespuesta = tipoCarreraService.grabarTipoCarrera(req);
+			mRespuesta = carreraService.grabarCarrera(req);
 			
 		} catch (Exception e) {
 			
@@ -38,11 +36,11 @@ public class CarreraApiController {
 		return new ResponseEntity<RespuestaGeneralResponse>(mRespuesta, HttpStatus.OK);
 	}
 	
-	@PostMapping(value = "/listarTipoCarrera", produces = MediaType.APPLICATION_JSON_VALUE)
-	public List<TipoCarreraResponse> listarTipoCarrera(@RequestBody TipoCarreraRequest req){	
-		List<TipoCarreraResponse> listado = new ArrayList<TipoCarreraResponse>();
+	@PostMapping(value = "/listarCarreras", produces = MediaType.APPLICATION_JSON_VALUE)
+	public List<CarreraResponse> listarCarreras(@RequestBody CarreraRequest req){	
+		List<CarreraResponse> listado = new ArrayList<CarreraResponse>();
 		try {
-			listado = tipoCarreraService.listarTipoCarreras(req);
+			listado = carreraService.listarCarreras(req);
 		} catch (Exception e) {
 			
 		}

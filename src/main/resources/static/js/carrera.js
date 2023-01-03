@@ -37,7 +37,7 @@ function grabarCarrera() {
 	cargarCarrera();
 	$("#loading-div").show(); 
 	$.ajax({
-		url: './grabarCarrera',
+		url: catminer+'/grabarCarrera',
 		type: 'POST',
 		data: JSON.stringify(carrera),
 		dataType: 'json',
@@ -98,7 +98,7 @@ function actualizarCarrera() {
 	cargarCarrera();
 	$("#loading-div").show(); 
 	$.ajax({
-		url: './grabarCarrera',
+		url: catminer+'/grabarCarrera',
 		type: 'POST',
 		data: JSON.stringify(carrera),
 		dataType: 'json',
@@ -148,7 +148,7 @@ function eliminarCarrera() {
 	carrera.esRegistro=0;
 	$("#loading-div").show(); 
 	$.ajax({
-		url: './grabarCarrera',
+		url: catminer+'/grabarCarrera',
 		type: 'POST',
 		data: JSON.stringify(carrera),
 		dataType: 'json',
@@ -336,5 +336,5 @@ function limpiar() {
 }
 
 function retornar() {
-	window.location = "./carrera";
+	window.location = catminer;
 }

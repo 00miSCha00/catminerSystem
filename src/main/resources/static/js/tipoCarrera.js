@@ -37,7 +37,7 @@ function grabarTipoCarrera() {
 	cargarTipoCarrera();
 	$("#loading-div").show(); 
 	$.ajax({
-		url: './grabarTipoCarrera',
+		url: catminer+'/grabarTipoCarrera',
 		type: 'POST',
 		data: JSON.stringify(tipoCarrera),
 		dataType: 'json',
@@ -98,7 +98,7 @@ function actualizarTipoCarrera() {
 	cargarTipoCarrera();
 	$("#loading-div").show(); 
 	$.ajax({
-		url: './grabarTipoCarrera',
+		url: catminer+'/grabarTipoCarrera',
 		type: 'POST',
 		data: JSON.stringify(tipoCarrera),
 		dataType: 'json',
@@ -148,7 +148,7 @@ function eliminarTipoCarrera() {
 	tipoCarrera.esRegistro=0;
 	$("#loading-div").show(); 
 	$.ajax({
-		url: './grabarTipoCarrera',
+		url: catminer+'/grabarTipoCarrera',
 		type: 'POST',
 		data: JSON.stringify(tipoCarrera),
 		dataType: 'json',
@@ -303,5 +303,5 @@ function limpiar() {
 }
 
 function retornar() {
-	window.location = "./tipoCarrera";
+	window.location = catminer;
 }

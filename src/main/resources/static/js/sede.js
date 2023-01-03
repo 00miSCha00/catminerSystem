@@ -36,8 +36,8 @@ function grabarSede() {
 
 	cargarSede();
 	$("#loading-div").show(); 
-	$.ajax({
-		url: './grabarSede',
+	$.ajax({ 
+		url: catminer+'/grabarSede',
 		type: 'POST',
 		data: JSON.stringify(sede),
 		dataType: 'json',
@@ -98,7 +98,7 @@ function actualizarSede() {
 	cargarSede();
 	$("#loading-div").show(); 
 	$.ajax({
-		url: './grabarSede',
+		url: catminer+'/grabarSede',
 		type: 'POST',
 		data: JSON.stringify(sede),
 		dataType: 'json',
@@ -148,7 +148,7 @@ function eliminarSede() {
 	sede.esRegistro=0;
 	$("#loading-div").show(); 
 	$.ajax({
-		url: './grabarSede',
+		url: catminer+'/grabarSede',
 		type: 'POST',
 		data: JSON.stringify(sede),
 		dataType: 'json',
@@ -306,5 +306,5 @@ function limpiar() {
 }
 
 function retornar() {
-	window.location = "./sede";
+	window.location = catminer;
 }

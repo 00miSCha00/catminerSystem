@@ -1,4 +1,6 @@
 $(document).ready(function() {
+	console.log("catminer: "+ catminer);
+	
 	$('#menu_on').click(function(){
 		    	$('body').toggleClass('visible_menu');
 		    });
@@ -17,6 +19,8 @@ $(".upperCase").on("keypress", function () {
 	   $input.val($input.val().toUpperCase());
 	  },5);
 })
+
+cargarOpcionesMenu();
 
 });
 
@@ -106,5 +110,18 @@ function fechaMayorActual(date){
       return false;
 }
 
+function cargarOpcionesMenu(){
+	
+	$(".panelUrl").attr("href",catminer+"/panel");
+	$(".mantenimientoUrl").attr("href",catminer+"/mantenimiento"); 
+	$(".inscripcionesUrl").attr("href",catminer+"/inscripciones");
+	$(".pagosUrl").attr("href",catminer+"/pagos"); 
+	
+	$(".sedeUrl").attr("href",catminer+"/mantenimiento/sede");
+	$(".bancoUrl").attr("href",catminer+"/mantenimiento/banco"); 
+	$(".carrearUrl").attr("href",catminer+"/mantenimiento/carrera");
+	$(".tipoCarreraUrl").attr("href",catminer+"/mantenimiento/tipoCarrera"); 
+	
+}
 
 

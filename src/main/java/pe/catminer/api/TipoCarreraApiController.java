@@ -9,16 +9,14 @@ import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 import pe.catminer.api.request.TipoCarreraRequest;
-import pe.catminer.api.response.TipoCarreraResponse;
 import pe.catminer.api.response.RespuestaGeneralResponse;
+import pe.catminer.api.response.TipoCarreraResponse;
 import pe.catminer.api.service.TipoCarreraService;
 
 @RestController
-@RequestMapping("/tipoCarrera")
 public class TipoCarreraApiController {
 	
 	@Autowired

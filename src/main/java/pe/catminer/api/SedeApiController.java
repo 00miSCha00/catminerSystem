@@ -18,7 +18,6 @@ import pe.catminer.api.response.RespuestaGeneralResponse;
 import pe.catminer.api.service.SedeService;
 
 @RestController
-@RequestMapping("/sede")
 public class SedeApiController {
 	
 	@Autowired

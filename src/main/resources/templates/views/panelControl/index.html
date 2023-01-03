@@ -17,7 +17,7 @@
 
 		<div class="col-md-4">
 			<div class="main-box mb-pink">
-				<a href="./mantenimiento"> <i class="fa fa-tasks fa-5x"></i>
+				<a class="mantenimientoPanel" href="./mantenimiento"> <i class="fa fa-tasks fa-5x"></i>
 					<h5>Mantenimientos</h5>
 				</a>
 			</div>
@@ -28,7 +28,7 @@
 
 		<div class="col-md-4">
 			<div class="main-box mb-dull">
-				<a href="./inscripciones"> <i class="fa fa-users fa-5x"></i>
+				<a class="inscripcionesPanel" href="./inscripciones"> <i class="fa fa-users fa-5x"></i>
 					<h5>Inscripciones</h5>
 				</a>
 			</div>
@@ -37,7 +37,7 @@
 
 		<div class="col-md-4">
 			<div class="main-box mb-red">
-				<a href="./pagos"> <i class="fa fa-money fa-5x"></i>
+				<a class="pagosPanel" href="./pagos"> <i class="fa fa-money fa-5x"></i>
 					<h5>Pagos</h5>
 				</a>
 			</div>
@@ -50,6 +50,6 @@
 
 <div th:fragment="javascript">
 		<script type="text/javascript"
-			th:src="@{js/app.js}"></script>
+			th:src="@{/js/panel.js}"></script>
 		
 </div>

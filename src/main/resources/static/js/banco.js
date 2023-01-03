@@ -37,7 +37,7 @@ function grabarBanco() {
 	cargarBanco();
 	$("#loading-div").show(); 
 	$.ajax({
-		url: './grabarBanco',
+		url: catminer+'/grabarBanco',
 		type: 'POST',
 		data: JSON.stringify(banco),
 		dataType: 'json',
@@ -99,7 +99,7 @@ function actualizarBanco() {
 	cargarBanco();
 	$("#loading-div").show(); 
 	$.ajax({
-		url: './grabarBanco',
+		url: catminer+'/grabarBanco',
 		type: 'POST',
 		data: JSON.stringify(banco),
 		dataType: 'json',
@@ -149,7 +149,7 @@ function eliminarBanco() {
 	banco.esRegistro=0;
 	$("#loading-div").show(); 
 	$.ajax({
-		url: './grabarBanco',
+		url: catminer+'/grabarBanco',
 		type: 'POST',
 		data: JSON.stringify(banco),
 		dataType: 'json',
@@ -186,7 +186,7 @@ function eliminarBanco() {
 
 function listarBanco() {
 	listadoBanco.length = 0;
-	var url = "./listarBanco";
+	var url = catminer+"/listarBanco";
 	$("#loading-div").show();
 	bancoRequest= {
 		noBanco:$('#descripcionBancoBusqueda').val().toUpperCase()
@@ -309,5 +309,5 @@ function limpiar() {
 }
 
 function retornar() {
-	window.location = "./banco";
+	window.location = catminer+"/mantenimiento/banco";
 }
