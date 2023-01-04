@@ -18,13 +18,14 @@ import lombok.ToString;
 @ToString
 public class CarreraResponse {
 	
+	private int coCarrera;
+	private String deCarrera;
 	private int coTipoCarrera;
-	private String deTipoCarrera;
 	@Getter(value = AccessLevel.NONE)
 	private String codigoCarrera;
 	
 	public String getCodigoCarrera() {
-		this.codigoCarrera=StringUtils.leftPad(String.valueOf(coTipoCarrera), 4, '0');
+		this.codigoCarrera=StringUtils.leftPad(String.valueOf(coCarrera), 4, '0');
 		return codigoCarrera;
 	}
 }

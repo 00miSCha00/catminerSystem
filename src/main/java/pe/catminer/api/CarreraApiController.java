@@ -36,8 +36,8 @@ public class CarreraApiController {
 		return new ResponseEntity<RespuestaGeneralResponse>(mRespuesta, HttpStatus.OK);
 	}
 	
-	@PostMapping(value = "/listarCarreras", produces = MediaType.APPLICATION_JSON_VALUE)
-	public List<CarreraResponse> listarCarreras(@RequestBody CarreraRequest req){	
+	@PostMapping(value = "/listarCarrera", produces = MediaType.APPLICATION_JSON_VALUE)
+	public List<CarreraResponse> listarCarrera(@RequestBody CarreraRequest req){	
 		List<CarreraResponse> listado = new ArrayList<CarreraResponse>();
 		try {
 			listado = carreraService.listarCarreras(req);

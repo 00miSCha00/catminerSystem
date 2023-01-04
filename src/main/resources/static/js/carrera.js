@@ -1,8 +1,7 @@
 var table;
-var carrera = {
-
-};
+var carrera = {};
 var listadoCarrera = [];
+var listadoTipoCarrera = [];
 $(document).ready(function() {
 	$('#nuevo').click(function() {
 		nuevoCarrera();
@@ -14,16 +13,37 @@ $(document).ready(function() {
 	$('.actualizarRegistro').click(function() {
 		actualizarCarrera();
 	});
-	
+
 	$('.eliminarRegistro').click(function() {
 		eliminarCarrera();
 	});
-	
+
 	$('.buscarCarrera').click(function() {
 		listarCarrera();
 	});
 	
-	listarCarrera();
+	$(".tipoCarrera").select2({
+		placeholder: "Seleccione",
+		"language": {
+			"noResults": function() {
+				return "No hay resultados";
+			}
+		},
+		allowClear: true
+	});
+
+	$(".tipoCarreraN").select2({
+		placeholder: "Seleccione",
+		"language": {
+			"noResults": function() {
+				return "No hay resultados";
+			}
+		},
+		allowClear: true
+	});
+	listarTipoCarrera();
+	
+
 });
 
 
@@ -35,9 +55,9 @@ function nuevoCarrera() {
 function grabarCarrera() {
 
 	cargarCarrera();
-	$("#loading-div").show(); 
+	$("#loading-div").show();
 	$.ajax({
-		url: catminer+'/grabarCarrera',
+		url: catminer + '/grabarCarrera',
 		type: 'POST',
 		data: JSON.stringify(carrera),
 		dataType: 'json',
@@ -58,12 +78,12 @@ function grabarCarrera() {
 		error: function(res) {
 			var texto = 'Hubo un problema con el registro';
 			notificacionMensaje(texto, 'danger')
-			$("#loading-div").hide(); 
+			$("#loading-div").hide();
 			return false;
 		},
-		complete: function () {
-        $("#loading-div").hide(); 
-      }
+		complete: function() {
+			$("#loading-div").hide();
+		}
 	});
 
 }
@@ -76,7 +96,7 @@ function editar(id) {
 			if (reg.coCarrera === id) {
 				$('#idCarrera').val(reg.coCarrera);
 				$('#descripcionCarrera').val(reg.deCarrera);
-				
+
 
 				$('.nuevoTitulo').text("Actualización Tipo de Carrera");
 				$("#grabar").removeClass("grabarRegistro");
@@ -96,9 +116,9 @@ function editar(id) {
 function actualizarCarrera() {
 
 	cargarCarrera();
-	$("#loading-div").show(); 
+	$("#loading-div").show();
 	$.ajax({
-		url: catminer+'/grabarCarrera',
+		url: catminer + '/grabarCarrera',
 		type: 'POST',
 		data: JSON.stringify(carrera),
 		dataType: 'json',
@@ -119,18 +139,18 @@ function actualizarCarrera() {
 		error: function(res) {
 			var texto = 'Hubo un problema';
 			notificacionMensaje(texto, 'danger')
-			$("#loading-div").hide(); 
+			$("#loading-div").hide();
 			return false;
 		},
-		complete: function () {
-        $("#loading-div").hide(); 
-      }
+		complete: function() {
+			$("#loading-div").hide();
+		}
 	});
 
-	
+
 };
 
-function darBaja(id){
+function darBaja(id) {
 	if (listadoCarrera.length > 0) {
 
 		$.each(listadoCarrera, function(key, reg) {
@@ -145,23 +165,23 @@ function darBaja(id){
 }
 
 function eliminarCarrera() {
-	carrera.esRegistro=0;
-	$("#loading-div").show(); 
+	carrera.esRegistro = 0;
+	$("#loading-div").show();
 	$.ajax({
-		url: catminer+'/grabarCarrera',
+		url: catminer + '/grabarCarrera',
 		type: 'POST',
 		data: JSON.stringify(carrera),
 		dataType: 'json',
 		contentType: "application/json; charset=utf-8",
 		success: function(res) {
 			if (res.exito) {
-				
+
 				var texto = 'Se dio registro satisfactoriamente';
 				notificacionMensaje(texto, 'success')
 				retornar();
 
 			} else {
-				
+
 				var texto = 'Hubo un inconveniente';
 				notificacionMensaje(texto, 'danger')
 				return false;
@@ -171,12 +191,12 @@ function eliminarCarrera() {
 		error: function(res) {
 			var texto = 'Hubo un problema';
 			notificacionMensaje(texto, 'danger')
-			$("#loading-div").hide(); 
+			$("#loading-div").hide();
 			return false;
 		},
-		complete: function () {
-        $("#loading-div").hide(); 
-      }
+		complete: function() {
+			$("#loading-div").hide();
+		}
 	});
 
 
@@ -184,11 +204,11 @@ function eliminarCarrera() {
 };
 
 function listarTipoCarrera() {
-	listadoTipoCarrera.length = 0;
-	var url = "./listarTipoCarrera";
+	listado = [];
+	var url = catminer + "/listarTipoCarrera";
 	$("#loading-div").show();
-	tipoCarreraRequest= {
-		deTipoCarrera:''
+	tipoCarreraRequest = {
+		deTipoCarrera: ''
 	}
 	$.ajax({
 		url: url,
@@ -196,32 +216,50 @@ function listarTipoCarrera() {
 		dataType: 'json',
 		data: JSON.stringify(tipoCarreraRequest),
 		contentType: "application/json; charset=utf-8",
-		success: function(lista) {
+		success: function(res) {
+
+			$.each(res, function(i, data) {
+				var tipoCarrera = {}
+				tipoCarrera.id = data.coTipoCarrera;
+				tipoCarrera.text = data.deTipoCarrera;
+
+				listado.push(tipoCarrera);
+			});
+
 			$(".tipoCarrera").select2({
-			  data: lista
-			})
-	
+				data: listado,
+				 placeholder: "Seleccione",
+				width: "100%"
+			});
+			$(".tipoCarreraN").select2({
+				data: listado,
+				placeholder: "Seleccione",
+				width: "100%"
+			});
+			listadoTipoCarrera=res;
+			listarCarrera();
+
 		},
 		error: function(res) {
-			$("#loading-div").hide(); 
+			$("#loading-div").hide();
 			var texto = 'Hubo un problema con el listado de tipo de carreras.';
 			notificacionMensaje(texto, 'danger');
 			return false;
 		},
-		complete: function () {
-        $("#loading-div").hide(); 
-      }
+		complete: function() {
+			$("#loading-div").hide();
+		}
 	});
-	
+
 };
 
 
 function listarCarrera() {
 	listadoCarrera.length = 0;
-	var url = "./listarCarrera";
+	var url = catminer + "/listarCarrera";
 	$("#loading-div").show();
-	carreraRequest= {
-		deCarrera:$('#descripcionCarreraBusqueda').val().toUpperCase()
+	carreraRequest = {
+		deCarrera: $('#descripcionCarreraBusqueda').val().toUpperCase()
 	}
 	$.ajax({
 		url: url,
@@ -241,25 +279,29 @@ function listarCarrera() {
 					'<i class="fa fa-trash" aria-hidden="true"></i>' +
 					'</a>&nbsp;&nbsp;';
 
+				reg.tipoCarrera = obtenerNombreTipoCarrera(reg.coTipoCarrera);
+
 				miJson.push(reg);
 			});
 			
-			loadTable(miJson);
 			
+
+			loadTable(miJson);
+
 
 
 		},
 		error: function(res) {
-			$("#loading-div").hide(); 
+			$("#loading-div").hide();
 			var texto = 'Hubo un problema con la obtencion de las RSEs.';
 			notificacionMensaje(texto, 'danger');
 			return false;
 		},
-		complete: function () {
-        $("#loading-div").hide(); 
-      }
+		complete: function() {
+			$("#loading-div").hide();
+		}
 	});
-	
+
 };
 
 function loadTable(data) {
@@ -267,6 +309,7 @@ function loadTable(data) {
 
 		{ data: "codigoCarrera", className: "dt-left", targets: "_all" },
 		{ data: "deCarrera", className: "dt-left", targets: "_all" },
+		{ data: "tipoCarrera", className: "dt-left", targets: "_all" },
 		{ data: "opciones", className: "dt-center opciones-table", targets: "_all" }
 
 	];
@@ -312,11 +355,11 @@ function loadTable(data) {
 function cargarCarrera() {
 	carrera.coCarrera = $('#idCarrera').val();
 	carrera.deCarrera = $('#descripcionCarrera').val().toUpperCase();
-	carrera.esRegistro=1;
+	carrera.esRegistro = 1;
 }
 
-function obtenerObjetoEliminar(id){
-	
+function obtenerObjetoEliminar(id) {
+
 	if (listadoCarrera.length > 0) {
 
 		$.each(listadoCarrera, function(key, reg) {
@@ -335,6 +378,20 @@ function limpiar() {
 	$("#grabar").addClass("grabarRegistro");
 }
 
+function obtenerNombreTipoCarrera(id) {
+
+	if (listadoTipoCarrera.length > 0) {
+
+		$.each(listadoTipoCarrera, function(key, reg) {
+			if (reg.coCarrera === id) {
+				return reg.deTipoCarrera;
+			}else{
+				return "";
+			}
+		});
+	}
+}
+
 function retornar() {
-	window.location = catminer;
+	window.location = catminer + "/mantenimiento/carrera";
 }

@@ -185,7 +185,7 @@ function eliminarSede() {
 
 function listarSede() {
 	listadoSede.length = 0;
-	var url = "./listarSede";
+	var url = catminer+'/listarSede';
 	$("#loading-div").show();
 	sedeRequest= {
 		deSede:$('#descripcionSedeBusqueda').val().toUpperCase()
@@ -306,5 +306,5 @@ function limpiar() {
 }
 
 function retornar() {
-	window.location = catminer;
+	window.location = catminer+"/mantenimiento/sede";
 }

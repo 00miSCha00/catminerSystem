@@ -185,7 +185,7 @@ function eliminarTipoCarrera() {
 
 function listarTipoCarrera() {
 	listadoTipoCarrera.length = 0;
-	var url = "./listarTipoCarrera";
+	var url = catminer+"/listarTipoCarrera";
 	$("#loading-div").show();
 	tipoCarreraRequest= {
 		deTipoCarrera:$('#descripcionTipoCarreraBusqueda').val().toUpperCase()
@@ -303,5 +303,5 @@ function limpiar() {
 }
 
 function retornar() {
-	window.location = catminer;
+	window.location = catminer+"/mantenimiento/tipoCarrera";
 }

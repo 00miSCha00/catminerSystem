@@ -60,6 +60,22 @@ public class MantenimientoController {
 		return "index";
 	}
 	
+	@RequestMapping("/carrera")
+	public String listadoCarrera(Model model,HttpServletRequest request) {
+		String resultPath = PathCatminet.obtenerContext(request);
+		model.addAttribute("catminer", resultPath);
+		model.addAttribute("view", "views/mantenimiento/carrera/index");
+		return "index";
+	}
+	
+	@RequestMapping("/nuevaCarrera")
+	public String nuevaCarrera(Model model,HttpServletRequest request) {
+		String resultPath = PathCatminet.obtenerContext(request);
+		model.addAttribute("catminer", resultPath);
+		model.addAttribute("view", "views/mantenimiento/carrera/nuevo");
+		return "index";
+	}
+	
 	
 
 }

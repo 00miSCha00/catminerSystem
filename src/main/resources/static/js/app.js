@@ -113,13 +113,13 @@ function fechaMayorActual(date){
 function cargarOpcionesMenu(){
 	
 	$(".panelUrl").attr("href",catminer+"/panel");
-	$(".mantenimientoUrl").attr("href",catminer+"/mantenimiento"); 
+	$(".mantenimientoUrl").attr("href",catminer+"/panel/mantenimiento"); 
 	$(".inscripcionesUrl").attr("href",catminer+"/inscripciones");
 	$(".pagosUrl").attr("href",catminer+"/pagos"); 
 	
 	$(".sedeUrl").attr("href",catminer+"/mantenimiento/sede");
 	$(".bancoUrl").attr("href",catminer+"/mantenimiento/banco"); 
-	$(".carrearUrl").attr("href",catminer+"/mantenimiento/carrera");
+	$(".carreraUrl").attr("href",catminer+"/mantenimiento/carrera");
 	$(".tipoCarreraUrl").attr("href",catminer+"/mantenimiento/tipoCarrera"); 
 	
 }

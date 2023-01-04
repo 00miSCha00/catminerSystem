@@ -21,11 +21,11 @@ public class TipoCarreraResponse {
 	private int coTipoCarrera;
 	private String deTipoCarrera;
 	@Getter(value = AccessLevel.NONE)
-	private String codigoCarrera;
+	private String codigoTipoCarrera;
 	
-	public String getCodigoCarrera() {
-		this.codigoCarrera=StringUtils.leftPad(String.valueOf(coTipoCarrera), 4, '0');
-		return codigoCarrera;
+	public String getCodigoTipoCarrera() {
+		this.codigoTipoCarrera=StringUtils.leftPad(String.valueOf(coTipoCarrera), 4, '0');
+		return codigoTipoCarrera;
 	}
 }
 

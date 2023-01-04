@@ -16,36 +16,44 @@
 
 			<div class="panel-body">
 				<div class="row">
-					<div class="col-sm-8">
+					<div class="col-sm-6">
 						<div class="input-group">
 							<div class="input-group-prepend">
 								<span class="span-label input-group-text">Descripción</span>
 							</div>
 							<input type="text" class="form-control col-sm-12 upper"
-								name="descripcionCarreraBusqueda" id="descripcionCarreraBusqueda"
+								name="descripcionCarreraBusqueda"
+								id="descripcionCarreraBusqueda"
 								placeholder="buscar por descripción" />
-							<div class="input-group-append" style="z-index: 1;">
-								<button class="btn btn-primary buscarCarrera" type="button"
-									>Buscar</button>
-							</div>
+							
 						</div>
-
-
 					</div>
-					<div class="col-sm-4"></div>
+					<div class="col-sm-4">
+						<div class="form-group">
+									<label for="tipoCarrera">Tipo de Carreras</label> 
+									<select class="form-control tipoCarrera" id="tipoCarrera"></select>
+						</div>
+						<div class="input-group-append" >
+								<button class="btn btn-primary buscarCarrera" type="button">Buscar</button>
+							</div>
+						
+					</div>
+					<div class="col-sm-2">&nbsp;</div>
 				</div>
 				<br /> <br />
-				<hr style="margin-top: 1px; margin-bottom: 1px; border: 2px solid #00CA79;" />
+				<hr
+					style="margin-top: 1px; margin-bottom: 1px; border: 2px solid #00CA79;" />
 				<br /> <br />
 				<div class="row">
 					<div class="col-sm-10">
-						<h4 class="text-primary">LISTADO DE TIPO DE CARRERAS</h4>
+						<h4 class="text-primary">LISTADO DE CARRERAS</h4>
 					</div>
-					<div class="col-sm-2" style="text-align: right" >
-						<img th:src="@{/img/nuevo.png}" id="nuevo" title="Nueva Carrera" width="40" />&nbsp;&nbsp;
-						<img th:src="@{/img/excel.png}" id="exportarExcel" title="exportar Excel" width="40"/>
+					<div class="col-sm-2" style="text-align: right">
+						<img th:src="@{/img/nuevo.png}" id="nuevo" title="Nueva Carrera"
+							width="40" />&nbsp;&nbsp; <img th:src="@{/img/excel.png}"
+							id="exportarExcel" title="exportar Excel" width="40" />
 					</div>
-					
+
 					<br />
 				</div>
 			</div>
@@ -59,9 +67,10 @@
 								style="width: 100%; overflow-x: auto;">
 								<thead>
 									<tr>
-										<th class="small col-md-3">Codigo </th>
-										<th class="small col-md-6">Descripción</th>
-										<th class="small col-md-3">Opciones</th>
+										<th class="small col-md-2">Codigo</th>
+										<th class="small col-md-4">Carrera</th>
+										<th class="small col-md-4">Tipo</th>
+										<th class="small col-md-2">Opciones</th>
 
 									</tr>
 								</thead>
@@ -79,10 +88,9 @@
 		</div>
 	</div>
 
-<div th:include="views/mantenimiento/carrera/modal/nuevo"></div>
+	<div th:include="views/mantenimiento/carrera/modal/nuevo"></div>
 </div>
 <div th:fragment="javascript">
-		<script type="text/javascript"
-			th:src="@{/js/carrera.js}"></script>
-		
+	<script type="text/javascript" th:src="@{/js/carrera.js}"></script>
+
 </div>
