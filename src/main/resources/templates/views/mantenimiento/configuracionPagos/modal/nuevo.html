@@ -2,7 +2,7 @@
 <html xmlns:th="http://www.thymeleaf.org">
 <body>
 	<div role="dialog" class="modal colored-header colored-header-primary"
-		id="modalCarrera">
+		id="modalConfiguracionPagos">
 		<div class="modal-dialog modal-lg">
 			<div class="modal-content">
 				<div class="modal-header">
@@ -18,23 +18,23 @@
 					<div class="panel" style="padding-left: 5px; padding-right: 5px;">
 						<div class="row">
 							<div class="col-md-12">
-								<h1 class="page-head-line nuevoTitulo">Registro de Carrera</h1>
+								<h1 class="page-head-line nuevoTitulo">Registro de Configuracion Costos</h1>
 
 							</div>
 						</div>
-						<br /> <br /> <input type="hidden" id="idCarrera" />
+						<br /> <br /> <input type="hidden" id="idConfiguracionPagos" />
 						<div class="row ">
 							<div class="col-md-12">
 								<div class="form-group">
 									<!-- Full Name -->
-									<label for="descripcionCarrera" class="control-label">Carrera</label> 
+									<label for="descripcionConfiguracionPagos" class="control-label">ConfiguracionPagos</label> 
 									<input type="text" class="form-control upper"
-										id="descripcionCarrera" name="descripcionCarrera"
-										placeholder="Ingresa el nombre del Tipo de Carrera " />
+										id="descripcionConfiguracionPagos" name="descripcionConfiguracionPagos"
+										placeholder="Ingresa el nombre del Tipo de ConfiguracionPagos " />
 								</div>
 								<div class="form-group">
-									<label for="tipoCarreraN">Tipo de Carreras</label> 
-									<select class="form-control tipoCarreraN" id="tipoCarreraN"></select>
+									<label for="tipoConfiguracionPagosN">Carreras</label> 
+									<select class="form-control carrerasN" id="carrerasN"></select>
 								</div>
 								
 
@@ -60,6 +60,6 @@
 			</div>
 		</div>
 	</div>
-	<div th:include="views/mantenimiento/carrera/modal/dialogos"></div>
+	<div th:include="views/mantenimiento/configuracionPagos/modal/dialogos"></div>
 </body>
 </html>

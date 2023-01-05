@@ -1,63 +1,45 @@
 var table;
 var carrera = {};
+var listadoconfiguracionPagos = [];
 var listadoCarrera = [];
 var listadoTipoCarrera = [];
 $(document).ready(function() {
 	$('#nuevo').click(function() {
-		nuevoCarrera();
+		nuevoconfiguracionPagos();
 	});
 	$('.grabarRegistro').click(function() {
-		grabarCarrera();
+		grabarconfiguracionPagos();
 	});
 
 	$('.actualizarRegistro').click(function() {
-		actualizarCarrera();
+		actualizarconfiguracionPagos();
 	});
 
 	$('.eliminarRegistro').click(function() {
-		eliminarCarrera();
+		eliminarconfiguracionPagos();
 	});
 
-	$('.buscarCarrera').click(function() {
-		listarCarrera();
+	$('.buscarconfiguracionPagos').click(function() {
+		listarconfiguracionPagos();
 	});
 	
-	$(".tipoCarrera").select2({
-		placeholder: "Seleccione",
-		"language": {
-			"noResults": function() {
-				return "No hay resultados";
-			}
-		},
-		allowClear: true
-	});
-
-	$(".tipoCarreraN").select2({
-		placeholder: "Seleccione",
-		"language": {
-			"noResults": function() {
-				return "No hay resultados";
-			}
-		},
-		allowClear: true
-	});
-	listarTipoCarrera();
+	listarCarrera();
 	
 
 });
 
 
-function nuevoCarrera() {
+function nuevoconfiguracionPagos() {
 	limpiar();
-	$('#modalCarrera').modal('show');
+	$('#modalconfiguracionPagos').modal('show');
 }
 
-function grabarCarrera() {
+function grabarconfiguracionPagos() {
 
-	cargarCarrera();
+	cargarconfiguracionPagos();
 	$("#loading-div").show();
 	$.ajax({
-		url: catminer + '/grabarCarrera',
+		url: catminer + '/grabarconfiguracionPagos',
 		type: 'POST',
 		data: JSON.stringify(carrera),
 		dataType: 'json',
@@ -90,19 +72,19 @@ function grabarCarrera() {
 
 function editar(id) {
 
-	if (listadoCarrera.length > 0) {
+	if (listadoconfiguracionPagos.length > 0) {
 
-		$.each(listadoCarrera, function(key, reg) {
-			if (reg.coCarrera === id) {
-				$('#idCarrera').val(reg.coCarrera);
-				$('#descripcionCarrera').val(reg.deCarrera);
-				$('#tipoCarreraN').val(reg.coTipoCarrera);
-				$('#tipoCarreraN').trigger('change');
-				$('.nuevoTitulo').text("Actualización Tipo de Carrera");
+		$.each(listadoconfiguracionPagos, function(key, reg) {
+			if (reg.coconfiguracionPagos === id) {
+				$('#idconfiguracionPagos').val(reg.coconfiguracionPagos);
+				$('#descripcionconfiguracionPagos').val(reg.deconfiguracionPagos);
+				$('#tipoconfiguracionPagosN').val(reg.coTipoconfiguracionPagos);
+				$('#tipoconfiguracionPagosN').trigger('change');
+				$('.nuevoTitulo').text("Actualización Tipo de configuracionPagos");
 				$("#grabar").removeClass("grabarRegistro");
 				$("#grabar").addClass("actualizarRegistro");
 
-				$('#modalCarrera').modal('show');
+				$('#modalconfiguracionPagos').modal('show');
 
 			}
 		});
@@ -113,12 +95,12 @@ function editar(id) {
 
 }
 
-function actualizarCarrera() {
+function actualizarconfiguracionPagos() {
 
-	cargarCarrera();
+	cargarconfiguracionPagos();
 	$("#loading-div").show();
 	$.ajax({
-		url: catminer + '/grabarCarrera',
+		url: catminer + '/grabarconfiguracionPagos',
 		type: 'POST',
 		data: JSON.stringify(carrera),
 		dataType: 'json',
@@ -151,12 +133,12 @@ function actualizarCarrera() {
 };
 
 function darBaja(id) {
-	if (listadoCarrera.length > 0) {
+	if (listadoconfiguracionPagos.length > 0) {
 
-		$.each(listadoCarrera, function(key, reg) {
-			if (reg.coCarrera === id) {
+		$.each(listadoconfiguracionPagos, function(key, reg) {
+			if (reg.coconfiguracionPagos === id) {
 				carrera = reg;
-				$('#datoEliminar').text(reg.noCarrera);
+				$('#datoEliminar').text(reg.noconfiguracionPagos);
 				$('#eliminarRegistro').modal('show');
 			}
 		});
@@ -164,11 +146,11 @@ function darBaja(id) {
 
 }
 
-function eliminarCarrera() {
+function eliminarconfiguracionPagos() {
 	carrera.esRegistro = 0;
 	$("#loading-div").show();
 	$.ajax({
-		url: catminer + '/grabarCarrera',
+		url: catminer + '/grabarconfiguracionPagos',
 		type: 'POST',
 		data: JSON.stringify(carrera),
 		dataType: 'json',
@@ -203,46 +185,46 @@ function eliminarCarrera() {
 
 };
 
-function listarTipoCarrera() {
+function listarCarrera() {
 	listado = [];
-	var url = catminer + "/listarTipoCarrera";
+	var url = catminer + "/listarTipoconfiguracionPagos";
 	$("#loading-div").show();
-	tipoCarreraRequest = {
-		deTipoCarrera: ''
+	tipoconfiguracionPagosRequest = {
+		deTipoconfiguracionPagos: ''
 	}
 	$.ajax({
 		url: url,
 		type: 'POST',
 		dataType: 'json',
-		data: JSON.stringify(tipoCarreraRequest),
+		data: JSON.stringify(tipoconfiguracionPagosRequest),
 		contentType: "application/json; charset=utf-8",
 		success: function(res) {
 
 			$.each(res, function(i, data) {
-				var tipoCarrera = {}
-				tipoCarrera.id = data.coTipoCarrera;
-				tipoCarrera.text = data.deTipoCarrera;
+				var tipoconfiguracionPagos = {}
+				tipoconfiguracionPagos.id = data.coTipoconfiguracionPagos;
+				tipoconfiguracionPagos.text = data.deTipoconfiguracionPagos;
 
-				listado.push(tipoCarrera);
+				listado.push(tipoconfiguracionPagos);
 			});
 
-			var tipoCarrera ={}
-	  	    	tipoCarrera.id=0;
-  	    		tipoCarrera.text="Seleccione Tipo de Carrera";
-	  	    	listado.unshift(tipoCarrera);
+			var tipoconfiguracionPagos ={}
+	  	    	tipoconfiguracionPagos.id=0;
+  	    		tipoconfiguracionPagos.text="Seleccione Tipo de configuracionPagos";
+	  	    	listado.unshift(tipoconfiguracionPagos);
 
-			$(".tipoCarreraB").select2({
+			$(".tipoconfiguracionPagosB").select2({
 				data: listado,
 				placeholder: "Seleccione",
 				width: "100%"
 			});
-			$(".tipoCarreraN").select2({
+			$(".tipoconfiguracionPagosN").select2({
 				data: listado,
 				placeholder: "Seleccione",
 				width: "100%"
 			});
-			listadoTipoCarrera=res;
-			listarCarrera();
+			listadoTipoconfiguracionPagos=res;
+			listarconfiguracionPagos();
 
 		},
 		error: function(res) {
@@ -259,12 +241,12 @@ function listarTipoCarrera() {
 };
 
 
-function listarCarrera() {
-	listadoCarrera.length = 0;
-	var url = catminer + "/listarCarrera";
+function listarconfiguracionPagos() {
+	listadoconfiguracionPagos.length = 0;
+	var url = catminer + "/listarconfiguracionPagos";
 	$("#loading-div").show();
 	carreraRequest = {
-		deCarrera: $('#descripcionCarreraBusqueda').val().toUpperCase()
+		deconfiguracionPagos: $('#descripcionconfiguracionPagosBusqueda').val().toUpperCase()
 	}
 	$.ajax({
 		url: url,
@@ -274,19 +256,19 @@ function listarCarrera() {
 		contentType: "application/json; charset=utf-8",
 		success: function(lista) {
 			var miJson = [];
-			listadoCarrera = lista;
+			listadoconfiguracionPagos = lista;
 
 			$.each(lista, function(key, reg) {
 
-				reg.opciones = '<a title="Editar Registro" href=javascript:editar(' + reg.coCarrera + ');>' +
+				reg.opciones = '<a title="Editar Registro" href=javascript:editar(' + reg.coconfiguracionPagos + ');>' +
 					'<i class="fa fa-pencil-square-o" aria-hidden="true"></i>' +
-					'</a>&nbsp;&nbsp;<a title="Eliminar Registro" href=javascript:darBaja(' + reg.coCarrera + ');>' +
+					'</a>&nbsp;&nbsp;<a title="Eliminar Registro" href=javascript:darBaja(' + reg.coconfiguracionPagos + ');>' +
 					'<i class="fa fa-trash" aria-hidden="true"></i>' +
 					'</a>&nbsp;&nbsp;';
 
-				 var tipoCarrera = obtenerNombreTipoCarrera(reg.coTipoCarrera);
-				 console.log("tipoCarrera: " + tipoCarrera);
-				 reg.tipoCarrera =tipoCarrera;
+				 var tipoconfiguracionPagos = obtenerNombreTipoconfiguracionPagos(reg.coTipoconfiguracionPagos);
+				 console.log("tipoconfiguracionPagos: " + tipoconfiguracionPagos);
+				 reg.tipoconfiguracionPagos =tipoconfiguracionPagos;
 
 				miJson.push(reg);
 			});
@@ -314,18 +296,18 @@ function listarCarrera() {
 function loadTable(data) {
 	var colBusqueda = [
 
-		{ data: "codigoCarrera", className: "dt-left", targets: "_all" },
-		{ data: "deCarrera", className: "dt-left", targets: "_all" },
-		{ data: "tipoCarrera", className: "dt-left", targets: "_all" },
+		{ data: "codigoconfiguracionPagos", className: "dt-left", targets: "_all" },
+		{ data: "deconfiguracionPagos", className: "dt-left", targets: "_all" },
+		{ data: "tipoconfiguracionPagos", className: "dt-left", targets: "_all" },
 		{ data: "opciones", className: "dt-center opciones-table", targets: "_all" }
 
 	];
 
 	if (table) {
 		table.destroy();
-		$('#listadoCarreras > tbody').empty();
+		$('#listadoconfiguracionPagoss > tbody').empty();
 	}
-	table = $('#listadoCarreras').DataTable({
+	table = $('#listadoconfiguracionPagoss').DataTable({
 		scrollX: true,
 		searching: false,
 		iDisplayLength: 20,
@@ -359,19 +341,19 @@ function loadTable(data) {
 
 
 };
-function cargarCarrera() {
-	carrera.coCarrera = $('#idCarrera').val();
-	carrera.deCarrera = $('#descripcionCarrera').val().toUpperCase();
-	carrera.coTipoCarrera= $("#tipoCarreraN option:selected").val();
+function cargarconfiguracionPagos() {
+	carrera.coconfiguracionPagos = $('#idconfiguracionPagos').val();
+	carrera.deconfiguracionPagos = $('#descripcionconfiguracionPagos').val().toUpperCase();
+	carrera.coTipoconfiguracionPagos= $("#tipoconfiguracionPagosN option:selected").val();
 	carrera.esRegistro = 1;
 }
 
 function obtenerObjetoEliminar(id) {
 
-	if (listadoCarrera.length > 0) {
+	if (listadoconfiguracionPagos.length > 0) {
 
-		$.each(listadoCarrera, function(key, reg) {
-			if (reg.coCarrera === id) {
+		$.each(listadoconfiguracionPagos, function(key, reg) {
+			if (reg.coconfiguracionPagos === id) {
 				return reg;
 			}
 		});
@@ -379,31 +361,15 @@ function obtenerObjetoEliminar(id) {
 }
 
 function limpiar() {
-	$('#idCarrera').val('');
-	$('#descripcionCarrera').val('');
-	$('#tipoCarreraN').val(0);
-	$('#tipoCarreraN').trigger('change');
+	$('#idconfiguracionPagos').val('');
+	$('#descripcionconfiguracionPagos').val('');
+	$('#tipoconfiguracionPagosN').val(0);
+	$('#tipoconfiguracionPagosN').trigger('change');
 	$("#grabar").removeClass("grabarRegistro");
 	$("#grabar").removeClass("actualizarRegistro");
 	$("#grabar").addClass("grabarRegistro");
 }
 
-function obtenerNombreTipoCarrera(id) {
-var tipoCarrera;
-	if (listadoTipoCarrera.length > 0) {
-
-		$.each(listadoTipoCarrera, function(key, reg) {
-			if (reg.coTipoCarrera === id) {
-				tipoCarrera= reg.deTipoCarrera
-				return ;
-			}else{
-				tipoCarrera = "-";
-				return ;
-			}
-		});
-		return tipoCarrera;
-	}
-}
 
 function retornar() {
 	window.location = catminer + "/mantenimiento/carrera";

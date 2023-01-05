@@ -19,22 +19,22 @@
 					<div class="col-sm-6">
 						<div class="input-group">
 							<div class="input-group-prepend">
-								<span class="span-label input-group-text">Descripción</span>
+								<span class="span-label input-group-text">ConfiguracionPago</span>
 							</div>
 							<input type="text" class="form-control col-sm-12 upper"
-								name="descripcionCarreraBusqueda"
-								id="descripcionCarreraBusqueda"
+								name="descripcionConfiguracionPagoBusqueda"
+								id="descripcionConfiguracionPagoBusqueda"
 								placeholder="buscar por descripción" />
 							
 						</div>
 					</div>
 					<div class="col-sm-4">
 						<div class="form-group">
-									<label for="tipoCarreraB">Tipo de Carreras</label> 
-									<select class="form-control tipoCarreraB" id="tipoCarreraB"></select>
+									<label for="tipoConfiguracionPagoB">Tipo de ConfiguracionPagos</label> 
+									<select class="form-control tipoConfiguracionPagoB" id="tipoConfiguracionPagoB"></select>
 						</div>
 						<div class="input-group-append" >
-								<button class="btn btn-primary buscarCarrera" type="button">Buscar</button>
+								<button class="btn btn-primary buscarConfiguracionPago" type="button">Buscar</button>
 							</div>
 						
 					</div>
@@ -46,10 +46,10 @@
 				<br /> <br />
 				<div class="row">
 					<div class="col-sm-10">
-						<h4 class="text-primary">LISTADO DE CARRERAS</h4>
+						<h4 class="text-primary">LISTADO DE CONFIGURACIONES DE COSTO CARRERA</h4>
 					</div>
 					<div class="col-sm-2" style="text-align: right">
-						<img th:src="@{/img/nuevo.png}" id="nuevo" title="Nueva Carrera"
+						<img th:src="@{/img/nuevo.png}" id="nuevo" title="Nueva ConfiguracionPago"
 							width="40" />&nbsp;&nbsp; <img th:src="@{/img/excel.png}"
 							id="exportarExcel" title="exportar Excel" width="40" />
 					</div>
@@ -62,14 +62,17 @@
 					<div class="col-md-12" id="resultado">
 						<div class="table-responsive"
 							style="padding: 1em; text-align: center;">
-							<table id="listadoCarreras"
+							<table id="listadoConfiguracionPagos"
 								class="table table-striped table-hover table-fw-widget table-text-small display3"
 								style="width: 100%; overflow-x: auto;">
 								<thead>
 									<tr>
 										<th class="small col-md-2">Codigo</th>
-										<th class="small col-md-4">Carrera</th>
-										<th class="small col-md-4">Tipo</th>
+										<th class="small col-md-2">Carrera</th>
+										<th class="small col-md-2">Tipo carrera</th>
+										<th class="small col-md-2">Duración</th>
+										<th class="small col-md-2">Costo unitario</th>
+										<th class="small col-md-2">Costo Total</th>
 										<th class="small col-md-2">Opciones</th>
 
 									</tr>
@@ -88,9 +91,9 @@
 		</div>
 	</div>
 
-	<div th:include="views/mantenimiento/carrera/modal/nuevo"></div>
+	<div th:include="views/mantenimiento/configuracionPagos/modal/nuevo"></div>
 </div>
 <div th:fragment="javascript">
-	<script type="text/javascript" th:src="@{/js/carrera.js}"></script>
+	<script type="text/javascript" th:src="@{/js/configuracionPagos.js}"></script>
 
 </div>

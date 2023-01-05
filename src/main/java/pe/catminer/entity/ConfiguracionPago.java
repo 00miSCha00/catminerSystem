@@ -25,20 +25,22 @@ import lombok.ToString;
 @Setter
 @ToString
 @Entity
-@Table(name = "banco")
+@Table(name = "configuracionpagos")
 @Where(clause = "esregistro=1")
-public class Banco {
+public class ConfiguracionPago {
 	
 	@Id 
 	@GeneratedValue(strategy = GenerationType.AUTO)
-	@Column (name = "cobanco")
-	private int coBanco;
-	@Column (name = "nobanco")
-	private String noBanco;
-	@Column (name = "nucuenta")
-	private String nuCuenta;
-	@Column (name = "nucci")
-	private String nucci;
+	@Column (name = "coconfiguracionpagos")
+	private int coConfiguracionPagos;
+	@Column (name = "cocarrera")
+	private int coCarrera;
+	@Column (name = "nuduracion")
+	private int duracion;
+	@Column (name = "costounit")
+	private long costoUnitario;
+	@Column (name = "costototal")
+	private long costoTotal;
 	
 	@Column (name = "esregistro")
 	private int esRegistro;

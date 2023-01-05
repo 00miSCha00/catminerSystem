@@ -76,6 +76,38 @@ public class MantenimientoController {
 		return "index";
 	}
 	
+	@RequestMapping("/tipoPago")
+	public String tipoPago(Model model,HttpServletRequest request) {
+		String resultPath = PathCatminet.obtenerContext(request);
+		model.addAttribute("catminer", resultPath);
+		model.addAttribute("view", "views/mantenimiento/tipoPago/index");
+		return "index";
+	}
+	
+	@RequestMapping("/nuevaTipoPago")
+	public String nuevaTipoPago(Model model,HttpServletRequest request) {
+		String resultPath = PathCatminet.obtenerContext(request);
+		model.addAttribute("catminer", resultPath);
+		model.addAttribute("view", "views/mantenimiento/tipoPago/nuevo");
+		return "index";
+	}
+	
+	@RequestMapping("/configuracionPagos")
+	public String configuracionPagos(Model model,HttpServletRequest request) {
+		String resultPath = PathCatminet.obtenerContext(request);
+		model.addAttribute("catminer", resultPath);
+		model.addAttribute("view", "views/mantenimiento/configuracionPagos/index");
+		return "index";
+	}
+	
+	@RequestMapping("/nuevaConfiguracionPagos")
+	public String nuevaConfiguracionPagos(Model model,HttpServletRequest request) {
+		String resultPath = PathCatminet.obtenerContext(request);
+		model.addAttribute("catminer", resultPath);
+		model.addAttribute("view", "views/mantenimiento/configuracionPagos/nuevo");
+		return "index";
+	}
+	
 	
 
 }
