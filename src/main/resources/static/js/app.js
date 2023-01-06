@@ -120,7 +120,9 @@ function cargarOpcionesMenu(){
 	$(".sedeUrl").attr("href",catminer+"/mantenimiento/sede");
 	$(".bancoUrl").attr("href",catminer+"/mantenimiento/banco"); 
 	$(".carreraUrl").attr("href",catminer+"/mantenimiento/carrera");
-	$(".tipoCarreraUrl").attr("href",catminer+"/mantenimiento/tipoCarrera"); 
+	$(".tipoCarreraUrl").attr("href",catminer+"/mantenimiento/tipoCarrera");
+	$(".tipoPagoUrl").attr("href",catminer+"/mantenimiento/tipoPago"); 
+	$(".configuraPagoUrl").attr("href",catminer+"/mantenimiento/configuracionPagos");  
 	
 }
 

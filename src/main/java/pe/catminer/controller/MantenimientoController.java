@@ -80,7 +80,7 @@ public class MantenimientoController {
 	public String tipoPago(Model model,HttpServletRequest request) {
 		String resultPath = PathCatminet.obtenerContext(request);
 		model.addAttribute("catminer", resultPath);
-		model.addAttribute("view", "views/mantenimiento/tipoPago/index");
+		model.addAttribute("view", "views/mantenimiento/tipoPago/index2");
 		return "index";
 	}
 	
