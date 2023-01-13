@@ -232,7 +232,7 @@ function listarTipoPago() {
 function loadTable(data) {
 	var colBusqueda = [
 
-		{ data: "codigoCarrera", className: "dt-left", targets: "_all" },
+		{ data: "codigoTipoPago", className: "dt-left", targets: "_all" },
 		{ data: "deTipoPago", className: "dt-left", targets: "_all" },
 		{ data: "opciones", className: "dt-center opciones-table", targets: "_all" }
 

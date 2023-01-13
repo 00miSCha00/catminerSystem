@@ -187,9 +187,9 @@ function eliminarconfiguracionPagos() {
 
 function listarCarrera() {
 	listado = [];
-	var url = catminer + "/listarTipoconfiguracionPagos";
+	var url = catminer + "/listarCarrera";
 	$("#loading-div").show();
-	tipoconfiguracionPagosRequest = {
+	carreraRequest = {
 		deTipoconfiguracionPagos: ''
 	}
 	$.ajax({
@@ -201,35 +201,35 @@ function listarCarrera() {
 		success: function(res) {
 
 			$.each(res, function(i, data) {
-				var tipoconfiguracionPagos = {}
-				tipoconfiguracionPagos.id = data.coTipoconfiguracionPagos;
-				tipoconfiguracionPagos.text = data.deTipoconfiguracionPagos;
+				var carrera = {}
+				carrera.id = data.coCarrera;
+				carrera.text = data.deCarrera;
 
-				listado.push(tipoconfiguracionPagos);
+				listado.push(carrera);
 			});
 
-			var tipoconfiguracionPagos ={}
-	  	    	tipoconfiguracionPagos.id=0;
-  	    		tipoconfiguracionPagos.text="Seleccione Tipo de configuracionPagos";
-	  	    	listado.unshift(tipoconfiguracionPagos);
+			var carrera ={}
+	  	    	carrera.id=0;
+  	    		carrera.text="Seleccione Tipo de configuracionPagos";
+	  	    	listado.unshift(carrera);
 
-			$(".tipoconfiguracionPagosB").select2({
+			$(".carreraB").select2({
 				data: listado,
 				placeholder: "Seleccione",
 				width: "100%"
 			});
-			$(".tipoconfiguracionPagosN").select2({
+			$(".carreraN").select2({
 				data: listado,
 				placeholder: "Seleccione",
 				width: "100%"
 			});
-			listadoTipoconfiguracionPagos=res;
-			listarconfiguracionPagos();
+			listadoCarrera=res;
+			
 
 		},
 		error: function(res) {
 			$("#loading-div").hide();
-			var texto = 'Hubo un problema con el listado de tipo de carreras.';
+			var texto = 'Hubo un problema con el listado de carreras.';
 			notificacionMensaje(texto, 'danger');
 			return false;
 		},
@@ -296,7 +296,7 @@ function listarconfiguracionPagos() {
 function loadTable(data) {
 	var colBusqueda = [
 
-		{ data: "codigoconfiguracionPagos", className: "dt-left", targets: "_all" },
+		{ data: "codigoConfiguracion", className: "dt-left", targets: "_all" },
 		{ data: "deconfiguracionPagos", className: "dt-left", targets: "_all" },
 		{ data: "tipoconfiguracionPagos", className: "dt-left", targets: "_all" },
 		{ data: "opciones", className: "dt-center opciones-table", targets: "_all" }
@@ -370,6 +370,33 @@ function limpiar() {
 	$("#grabar").addClass("grabarRegistro");
 }
 
+function obtenerNombreTipoCarrera(id) {
+var tipoCarrera="-";
+	if (listadoTipoCarrera.length > 0) {
+
+		$.each(listadoTipoCarrera, function(key, reg) {
+			if (reg.coTipoCarrera === id) {
+				tipoCarrera= reg.deTipoCarrera
+				return false;
+			}
+		});
+		return tipoCarrera;
+	}
+}
+
+function obtenerNombreCarrera(id) {
+var carrera="-";
+	if (listadoCarrera.length > 0) {
+
+		$.each(listadoCarrera, function(key, reg) {
+			if (reg.coCarrera === id) {
+				carrera= reg.deCarrera
+				return false;
+			}
+		});
+		return carrera;
+	}
+}
 
 function retornar() {
 	window.location = catminer + "/mantenimiento/carrera";

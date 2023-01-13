@@ -23,9 +23,11 @@ public class TipoPagoResponse {
 	@Getter(value = AccessLevel.NONE)
 	private String codigoTipoPago;
 	
-	public String getCodigoTipoCarrera() {
+	public String getCodigoTipoPago() {
 		this.codigoTipoPago=StringUtils.leftPad(String.valueOf(coTipoPago), 4, '0');
 		return codigoTipoPago;
 	}
+	
+	
 }
 

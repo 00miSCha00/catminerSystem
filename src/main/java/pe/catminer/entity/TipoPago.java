@@ -9,6 +9,8 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.Table;
 
+import org.hibernate.annotations.Where;
+
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.Getter;
@@ -23,17 +25,18 @@ import lombok.ToString;
 @Setter
 @ToString
 @Entity
-@Table(name = "TIPOPAGO", schema = "public")
+@Table(name = "TIPOPAGO")
+@Where(clause = "esregistro=1")
 public class TipoPago {
 	
 	@Id 
 	@GeneratedValue(strategy = GenerationType.AUTO)
-	@Column (name = "coTipoPago")
+	@Column (name = "cotipopago")
 	private int coTipoPago;
-	@Column (name = "deTipoPago")
+	@Column (name = "detipopago")
 	private String deTipoPago;
 	
-	@Column (name = "esRegistro")
+	@Column (name = "esregistro")
 	private int esRegistro;
 	@Column (name = "usucrea")
 	private String usuarioCreacion;
