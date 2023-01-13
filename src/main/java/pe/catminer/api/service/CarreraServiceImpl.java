@@ -42,6 +42,9 @@ public class CarreraServiceImpl implements CarreraService {
 
 			if (req.getDeCarrera() != null && !req.getDeCarrera().isEmpty())
 				predicates.add(qb.like(carrera.get("deCarrera"), "%"+req.getDeCarrera()+"%"));
+			
+			if (req.getCoTipoCarrera() >0)
+				predicates.add(qb.equal(carrera.get("coTipoCarrera"), req.getCoTipoCarrera()));
 
 			cq.select(carrera).where(predicates.toArray(new Predicate[] {}));
 			listadoCarreras = (List<Carrera>) em.createQuery(cq).getResultList();

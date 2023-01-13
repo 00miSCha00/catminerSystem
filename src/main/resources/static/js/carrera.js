@@ -264,7 +264,8 @@ function listarCarrera() {
 	var url = catminer + "/listarCarrera";
 	$("#loading-div").show();
 	carreraRequest = {
-		deCarrera: $('#descripcionCarreraBusqueda').val().toUpperCase()
+		deCarrera: $('#descripcionCarreraBusqueda').val().toUpperCase(),
+		coTipoCarrera:$('#tipoCarreraB').val()
 	}
 	$.ajax({
 		url: url,
@@ -389,16 +390,13 @@ function limpiar() {
 }
 
 function obtenerNombreTipoCarrera(id) {
-var tipoCarrera;
+var tipoCarrera="-";
 	if (listadoTipoCarrera.length > 0) {
 
 		$.each(listadoTipoCarrera, function(key, reg) {
 			if (reg.coTipoCarrera === id) {
 				tipoCarrera= reg.deTipoCarrera
-				return ;
-			}else{
-				tipoCarrera = "-";
-				return ;
+				return false;
 			}
 		});
 		return tipoCarrera;
