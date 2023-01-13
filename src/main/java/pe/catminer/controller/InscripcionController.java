@@ -1,0 +1,113 @@
+package pe.catminer.controller;
+
+import javax.servlet.http.HttpServletRequest;
+
+import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
+import org.springframework.web.bind.annotation.RequestMapping;
+
+import pe.catminer.util.PathCatminet;
+
+@Controller
+@RequestMapping("/inscripcion")
+public class InscripcionController {
+	
+	@RequestMapping("/alumno")
+	public String listadoBanco(Model model,HttpServletRequest request) {
+		String resultPath = PathCatminet.obtenerContext(request);
+		model.addAttribute("catminer", resultPath);
+		model.addAttribute("view", "views/mantenimiento/banco/index");
+		return "index";
+	}
+	
+	@RequestMapping("/matricula")
+	public String nuevobanco(Model model,HttpServletRequest request) {
+		String resultPath = PathCatminet.obtenerContext(request);
+		model.addAttribute("catminer", resultPath);
+		model.addAttribute("view", "views/mantenimiento/banco/nuevo");
+		return "index";
+	}
+	
+	@RequestMapping("/sede")
+	public String listadoSede(Model model,HttpServletRequest request) {
+		String resultPath = PathCatminet.obtenerContext(request);
+		model.addAttribute("catminer", resultPath);
+		model.addAttribute("view", "views/mantenimiento/sede/index");
+		return "index";
+	}
+	
+	@RequestMapping("/nuevaSede")
+	public String nuevaSede(Model model,HttpServletRequest request) {
+		String resultPath = PathCatminet.obtenerContext(request);
+		model.addAttribute("catminer", resultPath);
+		model.addAttribute("view", "views/mantenimiento/sede/nuevo");
+		return "index";
+	}
+	
+	@RequestMapping("/tipoCarrera")
+	public String listadoTipoCarrera(Model model,HttpServletRequest request) {
+		String resultPath = PathCatminet.obtenerContext(request);
+		model.addAttribute("catminer", resultPath);
+		model.addAttribute("view", "views/mantenimiento/tipoCarrera/index");
+		return "index";
+	}
+	
+	@RequestMapping("/nuevaTipoCarrera")
+	public String nuevaTipoCarrera(Model model,HttpServletRequest request) {
+		String resultPath = PathCatminet.obtenerContext(request);
+		model.addAttribute("catminer", resultPath);
+		model.addAttribute("view", "views/mantenimiento/tipoCarrera/nuevo");
+		return "index";
+	}
+	
+	@RequestMapping("/carrera")
+	public String listadoCarrera(Model model,HttpServletRequest request) {
+		String resultPath = PathCatminet.obtenerContext(request);
+		model.addAttribute("catminer", resultPath);
+		model.addAttribute("view", "views/mantenimiento/carrera/index");
+		return "index";
+	}
+	
+	@RequestMapping("/nuevaCarrera")
+	public String nuevaCarrera(Model model,HttpServletRequest request) {
+		String resultPath = PathCatminet.obtenerContext(request);
+		model.addAttribute("catminer", resultPath);
+		model.addAttribute("view", "views/mantenimiento/carrera/nuevo");
+		return "index";
+	}
+	
+	@RequestMapping("/tipoPago")
+	public String tipoPago(Model model,HttpServletRequest request) {
+		String resultPath = PathCatminet.obtenerContext(request);
+		model.addAttribute("catminer", resultPath);
+		model.addAttribute("view", "views/mantenimiento/tipoPago/index2");
+		return "index";
+	}
+	
+	@RequestMapping("/nuevaTipoPago")
+	public String nuevaTipoPago(Model model,HttpServletRequest request) {
+		String resultPath = PathCatminet.obtenerContext(request);
+		model.addAttribute("catminer", resultPath);
+		model.addAttribute("view", "views/mantenimiento/tipoPago/nuevo");
+		return "index";
+	}
+	
+	@RequestMapping("/configuracionPagos")
+	public String configuracionPagos(Model model,HttpServletRequest request) {
+		String resultPath = PathCatminet.obtenerContext(request);
+		model.addAttribute("catminer", resultPath);
+		model.addAttribute("view", "views/mantenimiento/configuracionPagos/index");
+		return "index";
+	}
+	
+	@RequestMapping("/nuevaConfiguracionPagos")
+	public String nuevaConfiguracionPagos(Model model,HttpServletRequest request) {
+		String resultPath = PathCatminet.obtenerContext(request);
+		model.addAttribute("catminer", resultPath);
+		model.addAttribute("view", "views/mantenimiento/configuracionPagos/nuevo");
+		return "index";
+	}
+	
+	
+
+}

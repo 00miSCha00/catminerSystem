@@ -9,6 +9,8 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.Table;
 
+import org.hibernate.annotations.Where;
+
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.Getter;
@@ -23,27 +25,26 @@ import lombok.ToString;
 @Setter
 @ToString
 @Entity
-@Table(name = "PERSONA")
-public class Persona {
+@Table(name = "contacto")
+@Where(clause = "esregistro=1")
+public class Contacto {
 	
 	@Id 
 	@GeneratedValue(strategy = GenerationType.AUTO)
+	@Column (name = "cocontacto")
+	private int coContacto;
+	@Column (name = "coalumno")
+	private int coAlumno;
 	@Column (name = "copersona")
 	private int coPersona;
-	@Column (name = "coTipoDocumento")
-	private int coTipoDocumento;
-	@Column (name = "numeroDocumento")
-	private String numeroDocumento;
-	@Column (name = "apellidoPaterno")
-	private String apellidoPaterno;
-	@Column (name = "apellidoMaterno")
-	private String apellidoMaterno;
-	@Column (name = "nombres")
-	private String nombres;
-	@Column (name = "sexo")
-	private int sexo;
-	@Column (name = "fechaNacimiento")
-	private String fechaNacimiento;
+	@Column (name = "coparentesco")
+	private int coParentesco;
+	@Column (name = "direccion")
+	private String direccion;
+	@Column (name = "correo")
+	private String correo;
+	@Column (name = "celular")
+	private String celular;
 	
 	@Column (name = "esregistro")
 	private int esRegistro;

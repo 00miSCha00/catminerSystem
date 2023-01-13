@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<div th:fragment="content">
+
+	<div class="row">
+		<div class="col-md-12">
+			<h1 class="page-head-line">Inscripciones</h1>
+
+
+		</div>
+	</div>
+	<br />
+	<br />
+	<!-- /. ROW  -->
+	<div class="row">
+		<div class="col-md-3">&nbsp;</div>
+		<div class="col-md-3">
+			<div class="main-box mb-blue">
+				<a class="registroPersonaUrl" href="./registroAlumno"> <i
+					class="fa fa-balance-scale fa-5x"></i>
+					<h5>Registro Alumno</h5>
+				</a>
+			</div>
+		</div>
+
+
+
+
+		<div class="col-md-3">
+			<div class="main-box mb-yellow">
+				<a class="bancoUrl" href="./matricula"> <i
+					class="fa fa-university fa-5x"></i>
+					<h5>Matricula</h5>
+				</a>
+			</div>
+		</div>
+
+
+		<div class="col-md-3">&nbsp;</div>
+	</div>
+
+
+	<div class="pull-right">
+		<p class="btn btn-primary ">
+			<a class="panelUrl" href="./panel/"><i class="fa fa-desktop"></i></a>Panel
+			de control
+		</p>
+	</div>
+</div>
+<div th:fragment="javascript">
+	<script type="text/javascript" th:src="@{/js/inscripcion.js}"></script>
+
+</div>
