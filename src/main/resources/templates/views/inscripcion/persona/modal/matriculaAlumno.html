@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<body>
+	<div role="dialog" class="modal colored-header colored-header-primary"
+		id="modalMatricula">
+		<div class="modal-dialog modal-lg">
+			<div class="modal-content">
+				<div class="modal-header">
+					<button type="button" data-dismiss="modal" aria-hidden="true"
+						class="close md-close">
+						<span class="glyphicon glyphicon-remove cerrarIcon"></span>
+					</button>
+					<h3 class="modal-title">Modulo de Inscripción</h3>
+
+				</div>
+
+				<div class="modal-body">
+					<div class="panel" style="padding-left: 5px; padding-right: 5px;">
+						<div class="row">
+							<div class="col-md-12">
+								<h1 class="page-head-line nuevoTitulo">Matricula de Alumno</h1>
+
+							</div>
+						</div>
+						<br /> <br /> <input type="hidden" id="idPersona" /><input type="hidden" id="idAlumno" />
+						<div class="row ">
+							<div class="col-md-12">
+								<div class="card">
+									<div class="card-header" style="background:#007bff;">Datos del Alumno</div>
+									<div class="card-body">
+										<blockquote class="blockquote mb-0">
+											<span class="datosMatricula">Documento de Identidad:</span> <b><span class=" datosMatricula numeroDocumentoM"></span></b><br/>
+											<span class="datosMatricula">Apellidos y Nombres:</span> <b><span class=" datosMatricula apellidosNombresM"></span></b><br/>
+											<span class="datosMatricula">Sexo:</span><b><span class="datosMatricula sexoM"></span></b><br/>
+											<span class="datosMatricula">Fecha Nacimiento:</span><b><span class=" datosMatricula feNacimientoM"></span></b><br/>
+											
+										</blockquote>
+									</div>
+								</div>
+										<br/><br/>						
+								<div class="form-group">
+									<label for="carrerasN">Carreras</label> <select
+										class="form-control carrerasN" id="carrerasN"></select>
+								</div>
+								<div class="custom-control custom-checkbox">
+								  <input type="checkbox" class="custom-control-input" id="activar">
+								  <label class="custom-control-label" for="activar">Activar Especial</label>
+								</div>
+								<br/>
+								<div class="activarEspecial">
+									<div class="form-group">
+										<!-- Full Name -->
+										<label for="costoCarrera"	
+											class="control-label">Costo Mensual</label> <input type="text"
+											class="form-control numeric" id="costoCarrera"
+											name="costoCarrera"
+											placeholder="Ingresa la costo unitario de la carrera " />
+									</div>
+									
+									<div class="form-group">
+										<!-- Full Name -->
+										<label for="costoTotalCarrera"
+											class="control-label">Costo Total</label> <input type="text"
+											class="form-control sololectura" id="costoTotalCarrera" readonly="readonly"
+											name="costoTotalCarrera"
+											placeholder="Ingresa la costo total de la carrera " />
+									</div>
+								</div>
+							</div>
+							<hr style="margin-top: 1px; margin-bottom: 1px; background-color: yellow;" />
+							<div class="col-md-12">
+							
+								<div class="form-group">
+									<label for="direccion">Dirección</label>
+									<textarea class="form-control upper" id="direccion" name="direccion"
+										rows="3" cols="10"></textarea>
+								</div>
+								
+								<div class="form-group">
+									<!-- Full Name -->
+									<label for="email"
+										class="control-label">correo electrónico</label> <input type="text"
+										class="form-control" id="email"
+										name="email"
+										placeholder="Ingresa la costo total de la carrera " />
+								</div>
+								
+								<div class="form-group">
+									<!-- Full Name -->
+									<label for="celular"
+										class="control-label">Celular</label> <input type="text"
+										class="form-control" id="celular" 
+										name="celular"
+										placeholder="Ingresa celular " />
+								</div>
+							
+							</div>
+						</div>
+					</div>
+					<hr style="margin-top: 1px; margin-bottom: 1px;" />
+				</div>
+				<div class="modal-footer">
+					<div class="col-sm-3">&nbsp;</div>
+					<div class="col-sm-3">
+						<button class="btn btn-danger" data-dismiss="modal">
+							<i class="glyphicon glyphicon-minus"></i>&nbsp;Cancelar
+						</button>
+					</div>
+					<div class="col-sm-3">
+						<button type="button" data-toggle="modal" data-target="#matricularAlumno"
+							class="btn btn-primary">
+							<i class="glyphicon glyphicon-floppy-disk"></i>&nbsp;Aceptar
+						</button>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+	<div th:include="views/inscripcion/persona/modal/dialogos"></div>
+</body>
+</html>

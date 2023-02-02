@@ -22,8 +22,8 @@ public class ConfiguracionPagoApiController {
 	@Autowired
 	private ConfiguracionPagoService configuracionPagoService; 
 	
-	@PostMapping(value = "/grabarConfiguracionPago", produces = MediaType.APPLICATION_JSON_VALUE)
-	public ResponseEntity<RespuestaGeneralResponse>  listado(@RequestBody ConfiguracionPagoRequest req) {
+	@PostMapping(value = "/grabarconfiguracionPagos", produces = MediaType.APPLICATION_JSON_VALUE)
+	public ResponseEntity<RespuestaGeneralResponse>  grabarconfiguracionPagos(@RequestBody ConfiguracionPagoRequest req) {
 		RespuestaGeneralResponse mRespuesta = new RespuestaGeneralResponse();
 		try {
 			mRespuesta = configuracionPagoService.grabarConfiguracionPago(req);

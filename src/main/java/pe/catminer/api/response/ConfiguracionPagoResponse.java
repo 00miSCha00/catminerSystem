@@ -20,6 +20,8 @@ public class ConfiguracionPagoResponse {
 	
 	private int coConfiguracionPagos;
 	private int coCarrera;
+	private String carrera;
+	private String tipoCarrera;
 	private int duracion;
 	private long costoUnitario;
 	private long costoTotal;

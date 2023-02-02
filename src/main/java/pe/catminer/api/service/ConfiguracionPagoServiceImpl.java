@@ -13,11 +13,15 @@ import org.springframework.beans.BeanUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import pe.catminer.api.repository.CarreraRepository;
 import pe.catminer.api.repository.ConfiguracionPagoRepository;
+import pe.catminer.api.repository.TipoCarreraRepository;
 import pe.catminer.api.request.ConfiguracionPagoRequest;
 import pe.catminer.api.response.ConfiguracionPagoResponse;
 import pe.catminer.api.response.RespuestaGeneralResponse;
+import pe.catminer.entity.Carrera;
 import pe.catminer.entity.ConfiguracionPago;
+import pe.catminer.entity.TipoCarrera;
 
 @Service
 public class ConfiguracionPagoServiceImpl implements ConfiguracionPagoService {
@@ -27,6 +31,10 @@ public class ConfiguracionPagoServiceImpl implements ConfiguracionPagoService {
 
 	@Autowired
 	private ConfiguracionPagoRepository configuracionPagoRepository;
+	@Autowired
+	private CarreraRepository carreraRepository;
+	@Autowired
+	private TipoCarreraRepository tipoCarreraRepository; 
 
 	@Override
 	public List<ConfiguracionPagoResponse> listarConfiguracionPagos(ConfiguracionPagoRequest req) {
@@ -49,6 +57,10 @@ public class ConfiguracionPagoServiceImpl implements ConfiguracionPagoService {
 			listadoConfiguracionPagos.forEach(t -> {
 				ConfiguracionPagoResponse rep = new ConfiguracionPagoResponse();
 				BeanUtils.copyProperties(t, rep);
+				Carrera car = carreraRepository.findById(t.getCoCarrera()).get();
+				TipoCarrera tc = tipoCarreraRepository.findById(car.getCoTipoCarrera()).get();
+				rep.setCarrera(car.getDeCarrera());
+				rep.setTipoCarrera(tc.getDeTipoCarrera());
 				listadoConfiguracionPagoResponse.add(rep);
 			});
 

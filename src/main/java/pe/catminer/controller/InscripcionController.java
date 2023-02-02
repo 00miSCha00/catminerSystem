@@ -16,7 +16,7 @@ public class InscripcionController {
 	public String listadoBanco(Model model,HttpServletRequest request) {
 		String resultPath = PathCatminet.obtenerContext(request);
 		model.addAttribute("catminer", resultPath);
-		model.addAttribute("view", "views/mantenimiento/banco/index");
+		model.addAttribute("view", "views/inscripcion/persona/index");
 		return "index";
 	}
 	
@@ -24,90 +24,9 @@ public class InscripcionController {
 	public String nuevobanco(Model model,HttpServletRequest request) {
 		String resultPath = PathCatminet.obtenerContext(request);
 		model.addAttribute("catminer", resultPath);
-		model.addAttribute("view", "views/mantenimiento/banco/nuevo");
+		model.addAttribute("view", "views/inscripcion/persona/nuevo");
 		return "index";
 	}
-	
-	@RequestMapping("/sede")
-	public String listadoSede(Model model,HttpServletRequest request) {
-		String resultPath = PathCatminet.obtenerContext(request);
-		model.addAttribute("catminer", resultPath);
-		model.addAttribute("view", "views/mantenimiento/sede/index");
-		return "index";
-	}
-	
-	@RequestMapping("/nuevaSede")
-	public String nuevaSede(Model model,HttpServletRequest request) {
-		String resultPath = PathCatminet.obtenerContext(request);
-		model.addAttribute("catminer", resultPath);
-		model.addAttribute("view", "views/mantenimiento/sede/nuevo");
-		return "index";
-	}
-	
-	@RequestMapping("/tipoCarrera")
-	public String listadoTipoCarrera(Model model,HttpServletRequest request) {
-		String resultPath = PathCatminet.obtenerContext(request);
-		model.addAttribute("catminer", resultPath);
-		model.addAttribute("view", "views/mantenimiento/tipoCarrera/index");
-		return "index";
-	}
-	
-	@RequestMapping("/nuevaTipoCarrera")
-	public String nuevaTipoCarrera(Model model,HttpServletRequest request) {
-		String resultPath = PathCatminet.obtenerContext(request);
-		model.addAttribute("catminer", resultPath);
-		model.addAttribute("view", "views/mantenimiento/tipoCarrera/nuevo");
-		return "index";
-	}
-	
-	@RequestMapping("/carrera")
-	public String listadoCarrera(Model model,HttpServletRequest request) {
-		String resultPath = PathCatminet.obtenerContext(request);
-		model.addAttribute("catminer", resultPath);
-		model.addAttribute("view", "views/mantenimiento/carrera/index");
-		return "index";
-	}
-	
-	@RequestMapping("/nuevaCarrera")
-	public String nuevaCarrera(Model model,HttpServletRequest request) {
-		String resultPath = PathCatminet.obtenerContext(request);
-		model.addAttribute("catminer", resultPath);
-		model.addAttribute("view", "views/mantenimiento/carrera/nuevo");
-		return "index";
-	}
-	
-	@RequestMapping("/tipoPago")
-	public String tipoPago(Model model,HttpServletRequest request) {
-		String resultPath = PathCatminet.obtenerContext(request);
-		model.addAttribute("catminer", resultPath);
-		model.addAttribute("view", "views/mantenimiento/tipoPago/index2");
-		return "index";
-	}
-	
-	@RequestMapping("/nuevaTipoPago")
-	public String nuevaTipoPago(Model model,HttpServletRequest request) {
-		String resultPath = PathCatminet.obtenerContext(request);
-		model.addAttribute("catminer", resultPath);
-		model.addAttribute("view", "views/mantenimiento/tipoPago/nuevo");
-		return "index";
-	}
-	
-	@RequestMapping("/configuracionPagos")
-	public String configuracionPagos(Model model,HttpServletRequest request) {
-		String resultPath = PathCatminet.obtenerContext(request);
-		model.addAttribute("catminer", resultPath);
-		model.addAttribute("view", "views/mantenimiento/configuracionPagos/index");
-		return "index";
-	}
-	
-	@RequestMapping("/nuevaConfiguracionPagos")
-	public String nuevaConfiguracionPagos(Model model,HttpServletRequest request) {
-		String resultPath = PathCatminet.obtenerContext(request);
-		model.addAttribute("catminer", resultPath);
-		model.addAttribute("view", "views/mantenimiento/configuracionPagos/nuevo");
-		return "index";
-	}
-	
 	
 
 }

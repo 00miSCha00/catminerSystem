@@ -124,6 +124,14 @@ function cargarOpcionesMenu(){
 	$(".tipoPagoUrl").attr("href",catminer+"/mantenimiento/tipoPago"); 
 	$(".configuraPagoUrl").attr("href",catminer+"/mantenimiento/configuracionPagos");  
 	
+	
+	$(".registroPersonaUrl").attr("href",catminer+"/inscripcion/alumno");
+	$(".bancoUrl").attr("href",catminer+"/mantenimiento/banco"); 
+	$(".carreraUrl").attr("href",catminer+"/mantenimiento/carrera");
+	$(".tipoCarreraUrl").attr("href",catminer+"/mantenimiento/tipoCarrera");
+	$(".tipoPagoUrl").attr("href",catminer+"/mantenimiento/tipoPago"); 
+	$(".configuraPagoUrl").attr("href",catminer+"/mantenimiento/configuracionPagos");  
+	
 }
 
 

@@ -1,9 +1,11 @@
 var table;
-var carrera = {};
+var configuracion = {};
 var listadoconfiguracionPagos = [];
 var listadoCarrera = [];
 var listadoTipoCarrera = [];
 $(document).ready(function() {
+	$('#costoCarrera').val(0);
+	$('#duracionCarrera').val(0)
 	$('#nuevo').click(function() {
 		nuevoconfiguracionPagos();
 	});
@@ -20,7 +22,13 @@ $(document).ready(function() {
 	});
 
 	$('.buscarconfiguracionPagos').click(function() {
-		listarconfiguracionPagos();
+		listarconfiguracionPago();
+	});
+	$('#costoCarrera').blur(function() {
+		calcularCostototal();
+	});
+	$('#duracionCarrera').blur(function() {
+		calcularCostototal();
 	});
 	
 	listarCarrera();
@@ -31,7 +39,7 @@ $(document).ready(function() {
 
 function nuevoconfiguracionPagos() {
 	limpiar();
-	$('#modalconfiguracionPagos').modal('show');
+	$('#modalConfiguracionPagos').modal('show');
 }
 
 function grabarconfiguracionPagos() {
@@ -41,7 +49,7 @@ function grabarconfiguracionPagos() {
 	$.ajax({
 		url: catminer + '/grabarconfiguracionPagos',
 		type: 'POST',
-		data: JSON.stringify(carrera),
+		data: JSON.stringify(configuracion),
 		dataType: 'json',
 		contentType: "application/json; charset=utf-8",
 		success: function(res) {
@@ -75,16 +83,20 @@ function editar(id) {
 	if (listadoconfiguracionPagos.length > 0) {
 
 		$.each(listadoconfiguracionPagos, function(key, reg) {
-			if (reg.coconfiguracionPagos === id) {
-				$('#idconfiguracionPagos').val(reg.coconfiguracionPagos);
-				$('#descripcionconfiguracionPagos').val(reg.deconfiguracionPagos);
-				$('#tipoconfiguracionPagosN').val(reg.coTipoconfiguracionPagos);
-				$('#tipoconfiguracionPagosN').trigger('change');
+			if (reg.coConfiguracionPagos === id) {
+				
+				
+				$('#idConfiguracionPagos').val(reg.coConfiguracionPagos);
+				$(".carrerasN").val(reg.coCarrera);
+				$("#duracionCarrera").val(reg.duracion);
+				$("#costoCarrera").val(reg.costoUnitario);
+				$("#costoTotalCarrera").val(reg.costoTotal);
+				$('.carrerasN').trigger('change');
 				$('.nuevoTitulo').text("Actualización Tipo de configuracionPagos");
 				$("#grabar").removeClass("grabarRegistro");
 				$("#grabar").addClass("actualizarRegistro");
 
-				$('#modalconfiguracionPagos').modal('show');
+				$('#modalConfiguracionPagos').modal('show');
 
 			}
 		});
@@ -136,9 +148,9 @@ function darBaja(id) {
 	if (listadoconfiguracionPagos.length > 0) {
 
 		$.each(listadoconfiguracionPagos, function(key, reg) {
-			if (reg.coconfiguracionPagos === id) {
-				carrera = reg;
-				$('#datoEliminar').text(reg.noconfiguracionPagos);
+			if (reg.coConfiguracionPagos === id) {
+				configuracion = reg;
+				$('#datoEliminar').text(reg.carrera);
 				$('#eliminarRegistro').modal('show');
 			}
 		});
@@ -147,12 +159,12 @@ function darBaja(id) {
 }
 
 function eliminarconfiguracionPagos() {
-	carrera.esRegistro = 0;
+	configuracion.esRegistro = 0;
 	$("#loading-div").show();
 	$.ajax({
 		url: catminer + '/grabarconfiguracionPagos',
 		type: 'POST',
-		data: JSON.stringify(carrera),
+		data: JSON.stringify(configuracion),
 		dataType: 'json',
 		contentType: "application/json; charset=utf-8",
 		success: function(res) {
@@ -190,13 +202,13 @@ function listarCarrera() {
 	var url = catminer + "/listarCarrera";
 	$("#loading-div").show();
 	carreraRequest = {
-		deTipoconfiguracionPagos: ''
+		deCarrera: ''
 	}
 	$.ajax({
 		url: url,
 		type: 'POST',
 		dataType: 'json',
-		data: JSON.stringify(tipoconfiguracionPagosRequest),
+		data: JSON.stringify(carreraRequest),
 		contentType: "application/json; charset=utf-8",
 		success: function(res) {
 
@@ -218,12 +230,13 @@ function listarCarrera() {
 				placeholder: "Seleccione",
 				width: "100%"
 			});
-			$(".carreraN").select2({
+			$(".carrerasN").select2({
 				data: listado,
 				placeholder: "Seleccione",
 				width: "100%"
 			});
 			listadoCarrera=res;
+			listarconfiguracionPago();
 			
 
 		},
@@ -241,18 +254,18 @@ function listarCarrera() {
 };
 
 
-function listarconfiguracionPagos() {
+function listarconfiguracionPago() {
 	listadoconfiguracionPagos.length = 0;
-	var url = catminer + "/listarconfiguracionPagos";
+	var url = catminer + "/listarConfiguracionPago";
 	$("#loading-div").show();
-	carreraRequest = {
-		deconfiguracionPagos: $('#descripcionconfiguracionPagosBusqueda').val().toUpperCase()
+	configuracionRequest = {
+		coCarrera: $('#carreraB').val()
 	}
 	$.ajax({
 		url: url,
 		type: 'POST',
 		dataType: 'json',
-		data: JSON.stringify(carreraRequest),
+		data: JSON.stringify(configuracionRequest),
 		contentType: "application/json; charset=utf-8",
 		success: function(lista) {
 			var miJson = [];
@@ -260,15 +273,12 @@ function listarconfiguracionPagos() {
 
 			$.each(lista, function(key, reg) {
 
-				reg.opciones = '<a title="Editar Registro" href=javascript:editar(' + reg.coconfiguracionPagos + ');>' +
+				reg.opciones = '<a title="Editar Registro" href=javascript:editar(' + reg.coConfiguracionPagos + ');>' +
 					'<i class="fa fa-pencil-square-o" aria-hidden="true"></i>' +
-					'</a>&nbsp;&nbsp;<a title="Eliminar Registro" href=javascript:darBaja(' + reg.coconfiguracionPagos + ');>' +
+					'</a>&nbsp;&nbsp;<a title="Eliminar Registro" href=javascript:darBaja(' + reg.coConfiguracionPagos + ');>' +
 					'<i class="fa fa-trash" aria-hidden="true"></i>' +
 					'</a>&nbsp;&nbsp;';
-
-				 var tipoconfiguracionPagos = obtenerNombreTipoconfiguracionPagos(reg.coTipoconfiguracionPagos);
-				 console.log("tipoconfiguracionPagos: " + tipoconfiguracionPagos);
-				 reg.tipoconfiguracionPagos =tipoconfiguracionPagos;
+				
 
 				miJson.push(reg);
 			});
@@ -297,17 +307,20 @@ function loadTable(data) {
 	var colBusqueda = [
 
 		{ data: "codigoConfiguracion", className: "dt-left", targets: "_all" },
-		{ data: "deconfiguracionPagos", className: "dt-left", targets: "_all" },
-		{ data: "tipoconfiguracionPagos", className: "dt-left", targets: "_all" },
+		{ data: "carrera", className: "dt-left", targets: "_all" },
+		{ data: "tipoCarrera", className: "dt-left", targets: "_all" },
+		{ data: "duracion", className: "dt-left", targets: "_all" },
+		{ data: "costoUnitario", className: "dt-left", targets: "_all" },
+		{ data: "costoTotal", className: "dt-left", targets: "_all" },
 		{ data: "opciones", className: "dt-center opciones-table", targets: "_all" }
 
 	];
 
 	if (table) {
 		table.destroy();
-		$('#listadoconfiguracionPagoss > tbody').empty();
+		$('#listadoConfiguracionPagos > tbody').empty();
 	}
-	table = $('#listadoconfiguracionPagoss').DataTable({
+	table = $('#listadoConfiguracionPagos').DataTable({
 		scrollX: true,
 		searching: false,
 		iDisplayLength: 20,
@@ -342,10 +355,13 @@ function loadTable(data) {
 
 };
 function cargarconfiguracionPagos() {
-	carrera.coconfiguracionPagos = $('#idconfiguracionPagos').val();
-	carrera.deconfiguracionPagos = $('#descripcionconfiguracionPagos').val().toUpperCase();
-	carrera.coTipoconfiguracionPagos= $("#tipoconfiguracionPagosN option:selected").val();
-	carrera.esRegistro = 1;
+	configuracion.esRegistro = 1;
+	configuracion.coConfiguracionPagos = $('#idConfiguracionPagos').val();
+	configuracion.coCarrera = $(".carrerasN option:selected").val();
+	configuracion.duracion = $("#duracionCarrera").val();
+	configuracion.costoUnitario = $("#costoCarrera").val();
+	configuracion.costoTotal = $("#costoTotalCarrera").val();
+
 }
 
 function obtenerObjetoEliminar(id) {
@@ -361,7 +377,7 @@ function obtenerObjetoEliminar(id) {
 }
 
 function limpiar() {
-	$('#idconfiguracionPagos').val('');
+	$('#').val('');
 	$('#descripcionconfiguracionPagos').val('');
 	$('#tipoconfiguracionPagosN').val(0);
 	$('#tipoconfiguracionPagosN').trigger('change');
@@ -397,7 +413,15 @@ var carrera="-";
 		return carrera;
 	}
 }
+function calcularCostototal(){
+	var duracion = $("#duracionCarrera").val();
+	var costo = $("#costoCarrera").val();
+	var costoTotal = duracion * costo;
+	$("#costoTotalCarrera").val(costoTotal);
+	
+	
+}
 
 function retornar() {
-	window.location = catminer + "/mantenimiento/carrera";
+	window.location = catminer + "/mantenimiento/configuracionPagos";
 }

@@ -113,3 +113,16 @@
   background-color: rgba(255, 255, 255, 0.8);
   z-index: 1100;
 }
+
+.sololectura{
+	background-color:#ffff80;
+	pointer-events:none; 
+}
+.datosMatricula{
+	font-size: 10px;
+	color: #007bff;
+}
+.card-header{
+	background: #007bff;
+	color: #fff;
+}
