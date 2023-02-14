@@ -6,6 +6,19 @@ var listadoPersona = [];
 var listadoCarrera = [];
 $(document).ready(function() {
 	$(".activarEspecial").hide();
+	
+	$('#pagoMatriculaFile').change(function(){
+     let nombre_fichero = $(this).val().split('\\').pop();
+
+     $('#pagoMatriculaTxtlabel').text(nombre_fichero);
+  	});
+  	
+  	$('#pagoMensualFile').change(function(){
+     let nombre_fichero = $(this).val().split('\\').pop();
+
+     $('#pagoMensuallabel').text(nombre_fichero);
+  	});
+	
 	$('#nuevo').click(function() {
 		nuevoPersona();
 	});
@@ -139,6 +152,68 @@ function grabarPersona() {
 	});
 
 }
+
+function realizarPagosAlumno(id) {
+
+	if (listadoPersona.length > 0) {
+
+		$.each(listadoPersona, function(key, reg) {
+			if (reg.coAlumno === id) {
+				$('#idPersona').val(reg.coPersona);
+				$('#idAlumno').val(reg.coAlumno);
+				$("#direccion").val(reg.direccion.toUpperCase());
+				$("#email").val(reg.correo.toUpperCase());
+				$("#celular").val(reg.celular);
+			
+								
+				$("#costoCarrera").val(reg.costounitario);
+				$("#costoTotalCarrera").val(reg.costototal);
+				$("#carrerasN option:selected").val(reg.coCarrera);
+				
+				$('.numeroDocumentoM').text(reg.numeroDocumento);
+				$('.apellidosNombresM').text(reg.apellidos);
+				$('.feNacimientoM').text(reg.feNacimiento);
+				$('.sexoM').text(reg.sexoTexto);
+				
+				if(reg.pagoMatricula){
+					$('#pagarImg').attr('src', catminer + '/img/pagado.png');
+					$("#pagarImg").removeClass("pagarImg");
+					$("#pagarImg").addClass("pagadoMatriculaImg");
+					$('#pagarImg').attr('title', 'Matricula pagada, hacer click para ver voucher');
+				}else{
+					$('#pagarImg').attr('src', catminer + '/img/realizarPago.png');
+					$("#pagarImg").addClass("pagarImg");
+					$("#pagarImg").removeClass("pagadoMatriculaImg");
+					$('#pagarImg').attr('title', 'Pagar Matricula, hacer click para cargar voucher');
+				}
+				
+				if(reg.pagoMensual){
+					$('#pagosMenImg').attr('src', catminer + '/img/pagado.png');
+					$("#pagosMenImg").removeClass("pagosMenImg");
+					$("#pagosMenImg").addClass("pagadoMensualImg");
+					$('#pagosMenImg').attr('title', 'Mensualidad del mes pagada, hacer click para ver voucher');
+				}else{
+					$('#pagosMenImg').attr('src', catminer + '/img/realizarPago.png');
+					$("#pagosMenImg").addClass("pagosMenImg");
+					$("#pagarImg").removeClass("pagadoMensualImg");
+					$('#pagarImg').attr('title', 'Pagar Mensualidad, hacer click para cargar voucher');
+				}
+
+				$('.nuevoTitulo').text("Realizar pagos alumno");
+				$("#grabar").removeClass("grabarRegistro");
+				$("#grabar").addClass("actualizarRegistro");
+
+				$('#modalPago').modal('show');
+				return false;
+			}
+		});
+
+
+	}
+
+
+}
+
 
 function editaMatriculaAlumno(id) {
 
@@ -369,6 +444,10 @@ function listarPersona() {
 				}else{
 					reg.opciones += '<a title="Editar Matricula alumno" href=javascript:editaMatriculaAlumno(' + reg.coAlumno + ');>' +
 						'<i class="fa fa-id-card-o" aria-hidden="true"></i></a>'
+					if (!reg.pago) {
+					reg.opciones += '<a title="Realizar pagos alumno" href=javascript:realizarPagosAlumno(' + reg.coAlumno + ');>' +
+						'<i class="fa fa-id-card-o" aria-hidden="true"></i></a>'
+					}
 				}
 				
 				
@@ -518,6 +597,7 @@ function matriculaAlumno(id) {
 	}
 
 }
+
 
 function retornar() {
 	window.location = catminer + "/inscripcion/alumno";

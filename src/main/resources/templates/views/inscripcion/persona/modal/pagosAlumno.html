@@ -1,0 +1,155 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<body>
+	<div role="dialog" class="modal colored-header colored-header-primary"
+		id="modalPago">
+		<div class="modal-dialog modal-lg">
+			<div class="modal-content">
+				<div class="modal-header">
+					<button type="button" data-dismiss="modal" aria-hidden="true"
+						class="close md-close">
+						<span class="glyphicon glyphicon-remove cerrarIcon"></span>
+					</button>
+					<h3 class="modal-title">Visualizar Pagos</h3>
+
+				</div>
+
+				<div class="modal-body">
+					<div class="panel" style="padding-left: 5px; padding-right: 5px;">
+						<div class="row">
+							<div class="col-md-12">
+								<h1 class="page-head-line nuevoTitulo">Pago de Alumno</h1>
+
+							</div>
+						</div>
+						<br /> <br /> <input type="hidden" id="idPersona" /><input type="hidden" id="idAlumno" />
+						<div class="row ">
+							<div class="col-md-12">
+								<div class="card">
+									<div class="card-header" style="background:#007bff;">Datos del Alumno</div>
+									<div class="card-body">
+										<blockquote class="blockquote mb-0">
+											<span class="datosMatricula">Documento de Identidad:</span> <b><span class=" datosMatricula numeroDocumentoM"></span></b><br/>
+											<span class="datosMatricula">Apellidos y Nombres:</span> <b><span class=" datosMatricula apellidosNombresM"></span></b><br/>
+											<span class="datosMatricula">Sexo:</span><b><span class="datosMatricula sexoM"></span></b><br/>
+											<span class="datosMatricula">Fecha Nacimiento:</span><b><span class=" datosMatricula feNacimientoM"></span></b><br/>
+											
+										</blockquote>
+									</div>
+								</div>
+										<br/><br/>	
+										
+								<div class="card">
+									<div class="card-header" style="background:#007bff;">Datos de la carrera</div>
+									<div class="card-body">
+										<blockquote class="blockquote mb-0">
+											<span class="datosMatricula">Carrera:</span> <b><span class=" datosMatricula numeroDocumentoM"></span></b><br/>
+											<span class="datosMatricula">Duración:</span> <b><span class=" datosMatricula apellidosNombresM"></span></b><br/>
+											<span class="datosMatricula">Costo mensual:</span><b><span class="datosMatricula sexoM"></span></b><br/>
+											<span class="datosMatricula">Costo total:</span><b><span class=" datosMatricula feNacimientoM"></span></b><br/>
+											
+										</blockquote>
+									</div>
+								</div>					
+								
+							</div>
+							<hr style="margin-top: 1px; border:thin; margin-bottom: 1px; background-color: yellow;" />
+							
+							<div class="col-md-12">
+								<div class="card">
+									<div class="card-header" style="background:#007bff;">Pago Matricula</div>
+									<div class="card-body">
+										<div class="row">
+											<div class="col-md-7">
+												
+												  												  
+												  <div class="input-group mb-3 pagaImgMatricula">
+													  <div class="custom-file">
+													    <input type="file" class="custom-file-input pagoMatriculaTxt" id="pagoMatriculaFile">
+													    <label class="custom-file-label" id="pagoMatriculaTxtlabel" for="pagoMatriculaFile" aria-describedby="pagoMatriculaFileAddon02">Elegir archivo del voucher</label>
+													  </div>
+													  <div class="input-group-append">
+													    <span class="input-group-text" id="pagoMatriculaFileAddon02"><img class="pagarImg" src="" width="25" id="pagarImg" /></span>
+													  </div>
+											 	 </div>
+											</div>
+										
+											<div class="col-md-4">&nbsp;</div>
+											<div class="col-md-1">
+												<a href=""><i class="fa fa-times fa-2" aria-hidden="true"></i></a> 
+											</div>
+										</div>
+									
+									</div>
+							</div>
+							
+							<hr style="margin-top: 1px; margin-bottom: 1px; border:medium; background-color: yellow;" />
+							<br/>
+							
+							<div class="card">
+								<div class="card-header" style="background:#007bff;">Pago Mensual</div>
+								<div class="card-body">
+									<div class="row">
+									<div class="col-md-4">
+									<select name="mes" id="mes" class="select2">
+							            <option value="1">Enero</option>
+							            <option value="2">Febrero</option>
+							            <option value="3">Marzo</option>
+							            <option value="4">Abril</option>
+							            <option value="5">Mayo</option>
+							            <option value="6">Junio</option>
+							            <option value="7">Julio</option>
+							            <option value="8">Agosto</option>
+							            <option value="9">Setiembre</option>
+							            <option value="10">Octubre</option>
+							            <option value="11">Noviembre</option>
+							            <option value="12">Diciembre</option>
+							        </select>
+										
+									</div>
+									<div class="col-md-7">
+										
+											<div class="input-group mb-3 pagaImgMensual">
+												  <div class="custom-file">
+												    <input type="file" class="custom-file-input pagoMensualTxt" id="pagoMensualFile">
+												    <label class="custom-file-label" id="pagoMensuallabel" for="pagoMensualFile" aria-describedby="pagoMensualFileAddon02">Elegir archivo del voucher</label>
+												  </div>
+												  <div class="input-group-append">
+												    <span class="input-group-text" id="pagoMensualFileAddon02"><img class="pagosMenImg" src="" width="25" id="pagosMenImg" /></span>
+												  </div>
+											 </div>
+											
+									</div>
+									<div class="col-md-1">
+										<a href=""><i class="fa fa-times fa-2" aria-hidden="true"></i></a> 
+									</div>
+									
+									</div>
+								</div>
+							</div>
+							</div>
+							
+						
+					</div>
+					<hr style="margin-top: 1px; margin-bottom: 1px;" />
+				</div>
+				<div class="modal-footer">
+					<div class="col-sm-3">&nbsp;</div>
+					<div class="col-sm-3">
+						<button class="btn btn-danger" data-dismiss="modal">
+							<i class="glyphicon glyphicon-minus"></i>&nbsp;Cancelar
+						</button>
+					</div>
+					<div class="col-sm-3">
+						<button type="button" data-toggle="modal" data-target="#matricularAlumno"
+							class="btn btn-primary">
+							<i class="glyphicon glyphicon-floppy-disk"></i>&nbsp;Aceptar
+						</button>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+	<div th:include="views/inscripcion/persona/modal/dialogos"></div>
+</body>
+</html>
